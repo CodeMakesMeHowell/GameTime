@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GameTime</string>
+    <string name="welcome_msg">Welcome to GameTime</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login">Login</string>
 </resources>
