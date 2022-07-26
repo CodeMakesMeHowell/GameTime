@@ -2,13 +2,14 @@ package com.example.gametime;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,16 +23,10 @@ public class MainActivity extends AppCompatActivity {
 
         MaterialButton loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
 
-        TextView signuptxt = findViewById(R.id.SignUptxt);
-
-        signuptxt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        //testing database REMOVE
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://gametime-4360d-default-rtdb.firebaseio.com/");
+        DatabaseReference myRef = database.getReference("message");
+        myRef.setValue("Hello, World!");
 
         //purely checking if textboxes are working and can save data from them
         //admin and admin is the username/password
