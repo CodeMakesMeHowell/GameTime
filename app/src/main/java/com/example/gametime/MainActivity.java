@@ -2,6 +2,7 @@ package com.example.gametime;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -20,6 +21,17 @@ public class MainActivity extends AppCompatActivity {
         TextView password = (TextView) findViewById(R.id.password);
 
         MaterialButton loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
+
+        TextView signuptxt = findViewById(R.id.SignUptxt);
+
+        signuptxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         //purely checking if textboxes are working and can save data from them
         //admin and admin is the username/password

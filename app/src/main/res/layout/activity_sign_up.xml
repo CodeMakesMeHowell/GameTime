@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".MainActivity">
+    tools:context=".SignUpActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -15,10 +15,10 @@
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center"/>
 
     <TextView
@@ -26,21 +26,61 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/welcome"
+        android:layout_marginTop="0dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="15dp"
         android:gravity="center"
-        android:text="Sign In"
+        android:text="Sign Up"
         android:textColor="#8A918F"
         android:textSize="25sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/selectType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/signin"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:text="Select account type"
+        android:textColor="#8A918F"
+        android:textSize="15sp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selectType" />
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#30ffffff"
+        android:drawableLeft="@drawable/ic_baseline_short_text_24"
+        android:drawablePadding="20dp"
+        android:hint="Full Name"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#8A918F" />
+
 
     <EditText
         android:inputType="text"
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/signin"
+        android:layout_below="@id/name"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
@@ -55,18 +95,20 @@
         android:textColorHint="#8A918F" />
 
     <EditText
-        android:inputType="textPassword"
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="#30ffffff"
         android:drawableLeft="@drawable/ic_baseline_lock_24"
         android:drawablePadding="20dp"
         android:hint="@string/password"
-        android:id="@+id/password"
-        android:layout_below="@id/username"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="42dp"
-        android:layout_width="match_parent"
+        android:inputType="textPassword"
         android:padding="20dp"
         android:textColor="@color/black"
         android:textColorHint="#8A918F" />
@@ -76,38 +118,28 @@
         android:layout_height="wrap_content"
         android:id="@+id/loginbtn"
         android:layout_below="@id/password"
-        android:text="@string/login"
+        android:text="Register"
         android:backgroundTint="#8A918F"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
         />
 
-    <TextView
-        android:id="@+id/forgotpass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/loginbtn"
-        android:layout_margin="1dp"
-        android:gravity="center"
-        android:text="@string/forgot_password"
-        android:textColor="#8A918F"
-        android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/SignUpPrompt"
+        android:id="@+id/SignInPrompt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/SignUptxt"
+        android:layout_above="@id/SignIntxt"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="85dp"
         android:layout_marginStart="250dp"
         android:gravity="center"
-        android:text="Don't have an account?"
+        android:text="Already have an account?"
         android:textColor="#8A918F"
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/SignUptxt"
+        android:id="@+id/SignIntxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -116,9 +148,10 @@
         android:layout_marginTop="2dp"
         android:layout_marginBottom="15dp"
         android:gravity="center"
-        android:text="Sign Up"
+        android:text="Sign In"
         android:textColor="#058813"
         android:textSize="14sp"
         android:textStyle="bold" />
+
 
 </RelativeLayout>
