@@ -1,0 +1,56 @@
+Distributed user stories
+Name: John
+
+What have you done since yesterday?
+	- Set up firebase
+	- Set up Jira and added user stories
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- No
+
+Name: Anna
+
+What have you done since yesterday?
+	- created sign up/sign in layouts
+
+What are you planning on doing today?
+	- starting to implement saving user info
+
+Any impediments or stumbling blocks?
+	- no
+
+Name: Arwin
+
+What have you done since yesterday?
+	- reviewed project requirements 
+
+What are you planning on doing today?
+	- create list of upcoming events for customer to view
+
+Any impediments or stumbling blocks?
+	- no
+
+Name: Nathan
+
+What have you done since yesterday?
+	- created markdown of data structures
+
+What are you planning on doing today?
+	- made firebase interface
+
+Any impediments or stumbling blocks?
+	- no
+
+Name: Steven
+
+What have you done since yesterday?
+	- studied android studio
+
+What are you planning on doing today?
+	- start working on filtering upcoming events
+
+Any impediments or stumbling blocks?
+	- no
