@@ -6,7 +6,7 @@ What have you done since yesterday?
 	- Set up Jira and added user stories
 
 What are you planning on doing today?
-	- Put points here ...
+	- create Event and Venue classes and 
 
 Any impediments or stumbling blocks?
 	- No
