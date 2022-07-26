@@ -8,6 +8,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
         TextView password = (TextView) findViewById(R.id.password);
 
         MaterialButton loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
+
+        //testing database REMOVE
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://gametime-4360d-default-rtdb.firebaseio.com/");
+        DatabaseReference myRef = database.getReference("message");
+        myRef.setValue("Hello, World!");
 
         //purely checking if textboxes are working and can save data from them
         //admin and admin is the username/password
