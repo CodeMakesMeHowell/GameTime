@@ -36,7 +36,7 @@ class FirebaseAdminStrategy extends FirebaseAdminBehavior {
     }
 
     @Override
-    public ArrayList<Event> getEventsForVenue() {
+    public ArrayList<Event> getEventsForVenue(Venue venue) {
         return null; //TODO
     }
 

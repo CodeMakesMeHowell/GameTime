@@ -22,7 +22,7 @@ class FirebaseCustomerStrategy extends FirebaseCustomerBehavior {
     }
 
     @Override
-    public ArrayList<Event> getEventsForVenue() {
+    public ArrayList<Event> getEventsForVenue(Venue venue) {
         return null; //TODO
     }
 
