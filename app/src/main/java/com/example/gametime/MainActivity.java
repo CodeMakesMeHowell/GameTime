@@ -31,11 +31,21 @@ public class MainActivity extends AppCompatActivity {
 
         //The SignUp text can be clicked
         TextView signuptxt = findViewById(R.id.SignUptxt);
+        TextView upcoming = findViewById(R.id.Upcoming);
 
         signuptxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        upcoming.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UpcomingEventsActivity.class);
                 startActivity(intent);
                 finish();
             }

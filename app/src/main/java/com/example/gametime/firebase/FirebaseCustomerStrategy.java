@@ -32,6 +32,10 @@ class FirebaseCustomerStrategy extends FirebaseCustomerBehavior {
         //TODO
     }
 
+    private void getEventByID(String id){
+
+    }
+
     @Override
     public void signUpForEvent(User user, Venue venue, Event event) throws GTFirebaseException {
         //TODO

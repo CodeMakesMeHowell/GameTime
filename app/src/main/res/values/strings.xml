@@ -4,9 +4,29 @@
     <string name="password">Password</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="login">Login</string>
+    <string name="venue">Venue:</string>
+    <string name="event">Event:</string>
 
     <string-array name="UserTypes">
         <item>Customer</item>
         <item>Admin</item>
+    </string-array>
+
+    <string-array name="upcoming_events">
+        <item>Event 1</item>
+        <item>Event 2</item>
+        <item>Event 3</item>
+        <item>Event 4</item>
+        <item>Event 5</item>
+        <item>Event 6</item>
+    </string-array>
+
+    <string-array name="date">
+        <item>7/22 - 7/28</item>
+        <item>8/22 - 8/28</item>
+        <item>9/22 - 9/28</item>
+        <item>10/22 - 10/28</item>
+        <item>11/22 - 11/28</item>
+        <item>12/22 - 12/28</item>
     </string-array>
 </resources>
