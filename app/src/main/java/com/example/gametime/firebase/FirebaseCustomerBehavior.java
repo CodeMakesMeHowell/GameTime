@@ -1,6 +1,7 @@
 package com.example.gametime.firebase;
 
 import com.example.gametime.model.Event;
+import com.example.gametime.model.User;
 import com.example.gametime.model.Venue;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -21,6 +22,5 @@ public abstract class FirebaseCustomerBehavior extends FirebaseConnector{
 
     public abstract void scheduleEvent(Venue venue, Event event) throws GTFirebaseException;
 
-    //TODO: String username param should be changed to type User once created
-    public abstract void signUpForEvent(String username, Venue venue, Event event) throws GTFirebaseException;
+    public abstract void signUpForEvent(User user, Venue venue, Event event) throws GTFirebaseException;
 }

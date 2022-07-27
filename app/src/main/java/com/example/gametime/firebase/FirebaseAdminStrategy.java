@@ -1,6 +1,7 @@
 package com.example.gametime.firebase;
 
 import com.example.gametime.model.Event;
+import com.example.gametime.model.User;
 import com.example.gametime.model.Venue;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 
 /**
  * Concrete implementations of admin database interactions
+ *
  * @author Nathan Wong
  */
 class FirebaseAdminStrategy extends FirebaseAdminBehavior {
@@ -46,7 +48,8 @@ class FirebaseAdminStrategy extends FirebaseAdminBehavior {
     }
 
     @Override
-    public void signUpForEvent(String username, Venue venue, Event event) throws GTFirebaseException {
-        //TODO
+    public void signUpForEvent(User user, Venue venue, Event event) throws GTFirebaseException {
+
     }
+
 }

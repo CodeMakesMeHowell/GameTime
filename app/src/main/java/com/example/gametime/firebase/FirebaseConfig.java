@@ -12,9 +12,9 @@ public final class FirebaseConfig {
     private final String FIREBASE_URL = "https://gametime-4360d-default-rtdb.firebaseio.com/";
     private final FirebaseDatabase dbInstance = FirebaseDatabase.getInstance(FIREBASE_URL);
 
-    private final FirebaseLoginBehavior loginBehvior = new FirebaseLoginStrategy(dbInstance);
-    private final FirebaseAdminBehavior adminBehavior = new FirebaseAdminStrategy(dbInstance);
-    private final FirebaseCustomerBehavior customerBehavior = new FirebaseCustomerStrategy(dbInstance);
+    public final FirebaseLoginBehavior loginBehavior = new FirebaseLoginStrategy(dbInstance);
+    public final FirebaseAdminBehavior adminBehavior = new FirebaseAdminStrategy(dbInstance);
+    public final FirebaseCustomerBehavior customerBehavior = new FirebaseCustomerStrategy(dbInstance);
 
     private FirebaseConfig() {
 
