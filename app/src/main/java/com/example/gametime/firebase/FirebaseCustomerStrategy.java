@@ -1,6 +1,7 @@
 package com.example.gametime.firebase;
 
 import com.example.gametime.model.Event;
+import com.example.gametime.model.User;
 import com.example.gametime.model.Venue;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,7 +33,7 @@ class FirebaseCustomerStrategy extends FirebaseCustomerBehavior {
     }
 
     @Override
-    public void signUpForEvent(String username, Venue venue, Event event) throws GTFirebaseException {
+    public void signUpForEvent(User user, Venue venue, Event event) throws GTFirebaseException {
         //TODO
     }
 }
