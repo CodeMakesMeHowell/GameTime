@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gametime.model.Event;
+import com.example.gametime.model.User;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,9 +22,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://gametime-4360d-default-rtdb.firebaseio.com/");
+    protected static String usernameTxt;
+    protected static String nameTxt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String usernameTxt = username.getText().toString();
                 String passwordTxt = password.getText().toString();
+                usernameTxt = username.getText().toString();
 
                 //checks if username is empty
                 if (TextUtils.isEmpty(usernameTxt)){
@@ -74,7 +82,12 @@ public class MainActivity extends AppCompatActivity {
                                 String getPassword = dataSnapshot.child("customer").child(usernameTxt).child("password").getValue(String.class);
 
                                 if(getPassword.equals(passwordTxt)){
-                                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                    nameTxt =  dataSnapshot.child("customer").child(usernameTxt).child("name").getValue(String.class);
+
+                                    Intent intent = new Intent(MainActivity.this, SelectionActivity.class);
+                                    startActivity(intent);
+                                    finish();
+
                                 } else  {
                                     Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
                                 }
@@ -83,7 +96,11 @@ public class MainActivity extends AppCompatActivity {
                                 String getPassword = dataSnapshot.child("admin").child(usernameTxt).child("password").getValue(String.class);
 
                                 if(getPassword.equals(passwordTxt)){
-                                    Toast.makeText(MainActivity.this, "Logged in as Admin", Toast.LENGTH_SHORT).show();
+                                    nameTxt =  dataSnapshot.child("admin").child(usernameTxt).child("name").getValue(String.class);
+
+                                    Intent intent = new Intent(MainActivity.this, SelectionActivity.class);
+                                    startActivity(intent);
+                                    finish();
                                 } else  {
                                     Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
                                 }
@@ -92,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                               }
                         }
 
+                        //static user
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
