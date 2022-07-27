@@ -1,9 +1,7 @@
-package com.example.gametime;
+package com.example.gametime.model;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Date;
 
 public class Event {
     String name;
