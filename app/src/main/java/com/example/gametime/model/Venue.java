@@ -9,8 +9,7 @@ public class Venue {
     String name;
     ArrayList<String> activities;
     ArrayList<Event> events;
-    private static final FirebaseDatabase database =
-            FirebaseDatabase.getInstance("https://gametime-4360d-default-rtdb.firebaseio.com/");
+
     public Venue(){
 
     }
@@ -20,10 +19,10 @@ public class Venue {
         this.events = events;
     }
 
-    public void addToDb(){
-        DatabaseReference myRef = database.getReference("Venues");
-        myRef.child(name).setValue(this);
-    }
+//    public void addToDb(){
+//        DatabaseReference myRef = database.getReference("Venues");
+//        myRef.child(name).setValue(this);
+//    }
 
     public String getName(){
         return name;
@@ -41,8 +40,7 @@ public class Venue {
         return ((Venue)other).name.equals(name);
     }
 
-    @Override
-    public String toString(){
+    public String toUIDString() {
         return name;
     }
 }
