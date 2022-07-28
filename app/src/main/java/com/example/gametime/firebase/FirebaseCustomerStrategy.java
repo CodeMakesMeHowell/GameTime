@@ -33,24 +33,23 @@ public class FirebaseCustomerStrategy extends FirebaseCustomerBehavior {
         DatabaseReference myRef = db.getReference("Venues");
         myRef.addValueEventListener(v);
     }
-    
     @Override
-    public ArrayList<Venue> getVenues(GTFirebaseListener<ArrayList<Venue>> listener) {
+    public ArrayList<Venue> getVenues() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Event> getEventsForVenue(Venue venue) {
         return null; //TODO
     }
 
     @Override
-    public ArrayList<Event> getEventsForVenue(Venue venue, GTFirebaseListener<ArrayList<Event>> listener) {
-        return null; //TODO
-    }
-
-    @Override
-    public void scheduleEvent(Venue venue, Event event, GTFirebaseListener listener) {
+    public void scheduleEvent(Venue venue, Event event) throws GTFirebaseException {
         //TODO
     }
 
     @Override
-    public void signUpForEvent(User user, Venue venue, Event event, GTFirebaseListener listener) {
+    public void signUpForEvent(User user, Venue venue, Event event) throws GTFirebaseException {
         //TODO
     }
 }

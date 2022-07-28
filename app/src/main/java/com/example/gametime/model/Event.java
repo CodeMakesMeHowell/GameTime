@@ -1,10 +1,11 @@
 package com.example.gametime.model;
 
-import java.util.Date;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Event {
     String name;
-    String start_time; //TODO: looks like Date class isn't supported by Firebase. We'll need to figure out an alternative - Nathan
+    String start_time;
     String end_time;
     String venue;
     int num_players;
@@ -26,27 +27,23 @@ public class Event {
         return name;
     }
 
-    public String getStart_time() {
+    public String getStart_time(){
         return start_time;
     }
 
-    public String getEnd_time() {
+    public String getEnd_time(){
         return end_time;
     }
 
-    public String getVenue() {
+    public String getVenue(){
         return venue;
     }
 
     @Override
-    public boolean equals(Object other) {
-        if (other == null || !(other instanceof Event)) return false;
-        Event otherEvent = (Event) other;
+    public boolean equals(Object other){
+        if(other == null || !(other instanceof Event)) return false;
+        Event otherEvent = (Event)other;
         return otherEvent.name.equals(name) && otherEvent.venue.equals(venue) &&
                 otherEvent.start_time.equals(start_time) && otherEvent.end_time.equals(end_time);
-    }
-
-    public String toUIDString() {
-        return String.format("%s_%s_%s_%s", venue, name, start_time.toString(), end_time.toString());
     }
 }

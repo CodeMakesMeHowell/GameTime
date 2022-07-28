@@ -8,12 +8,12 @@ import com.google.firebase.database.FirebaseDatabase;
  * Specifies all methods needed for admin interaction
  * @author Nathan Wong
  */
-public abstract class FirebaseAdminBehavior extends FirebaseConnector {
+public abstract class FirebaseAdminBehavior extends FirebaseCustomerBehavior {
     public FirebaseAdminBehavior(FirebaseDatabase db) {
         super(db);
     }
 
-    public abstract void addVenue(Venue venue, GTFirebaseListener listener);
-    public abstract void removeVenue(Venue venue, GTFirebaseListener listener);
-    public abstract void removeEvent(Venue venue, Event event, GTFirebaseListener listener);
+    public abstract void addVenue(Venue venue) throws GTFirebaseException;
+    public abstract void removeVenue(Venue venue);
+    public abstract void removeEvent(Venue venue, Event event);
 }

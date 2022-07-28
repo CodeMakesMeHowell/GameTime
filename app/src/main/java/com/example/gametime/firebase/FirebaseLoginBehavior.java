@@ -11,7 +11,7 @@ public abstract class FirebaseLoginBehavior extends FirebaseConnector {
         super(db);
     }
 
-    public abstract boolean isValidPasswordForUser(String username, String password, GTFirebaseListener<Boolean> listener); //TODO
+    public abstract boolean isValidPasswordForUser(String username, String password); //TODO
 
-    public abstract void createUser(String username, String password, GTFirebaseListener listener); //TODO
+    public abstract void createUser(String username, String password) throws GTFirebaseException; //TODO
 }
