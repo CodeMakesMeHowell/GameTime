@@ -1,11 +1,11 @@
 package com.example.gametime.firebase;
 
 public enum FirebaseDBPaths {
-    VENUES("venues"),
-    EVENTS("events"),
-    USERS("users"),
-    ADMINS(USERS.path + "/admin"),
-    CUSTOMERS(USERS.path + "/customer");
+    VENUES("Venues"),
+    EVENTS("Events"),
+    USERS("Users"),
+    ADMINS("Admin"),
+    CUSTOMERS("Customer");
 
     private final String path;
 

@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.example.gametime.MainActivity;
 import com.example.gametime.SignUpActivity;
+import com.example.gametime.firebase.FirebaseDBPaths;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -45,12 +46,12 @@ public class User {
         System.out.println(admin);
         if(this.admin)
         {
-            ref.child("users").child("admin").child(username).child("name").setValue(this.name);
-            ref.child("users").child("admin").child(username).child("password").setValue(this.password);
+            ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.ADMINS.getPath()).child(username).child("name").setValue(this.name);
+            ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.ADMINS.getPath()).child(username).child("password").setValue(this.password);
         } else {
-            ref.child("users").child("customer").child(username).child("name").setValue(this.name);
-            ref.child("users").child("customer").child(username).child("password").setValue(this.password);
-            ref.child("users").child("customer").child(username).child("events").setValue(this.events);
+            ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.CUSTOMERS.getPath()).child(username).child("name").setValue(this.name);
+            ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.CUSTOMERS.getPath()).child(username).child("password").setValue(this.password);
+            ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.CUSTOMERS.getPath()).child(username).child("events").setValue(this.events);
         }
     }
 }

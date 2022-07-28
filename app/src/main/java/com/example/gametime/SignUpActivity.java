@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gametime.firebase.FirebaseDBPaths;
 import com.example.gametime.model.Event;
 import com.example.gametime.model.User;
 import com.google.firebase.database.DataSnapshot;
@@ -70,7 +71,7 @@ public class SignUpActivity extends AppCompatActivity {
                     editTextRegisterPassword.setError("Password is required");
                     editTextRegisterPassword.requestFocus();
                 } else  {
-                        ref.child("users").child("customers").addListenerForSingleValueEvent(new ValueEventListener() {
+                        ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.CUSTOMERS.getPath()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.hasChild(usernameTxt))

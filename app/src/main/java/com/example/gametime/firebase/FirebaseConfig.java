@@ -26,4 +26,8 @@ public final class FirebaseConfig {
         }
         return config;
     }
+
+    public FirebaseDatabase getDbInstance() {
+        return dbInstance;
+    }
 }

@@ -30,7 +30,7 @@ public class FirebaseCustomerStrategy extends FirebaseCustomerBehavior {
 
     @Override
     public void listenForVenues(ValueEventListener v){
-        DatabaseReference myRef = db.getReference("Venues");
+        DatabaseReference myRef = db.getReference(FirebaseDBPaths.VENUES.getPath());
         myRef.addValueEventListener(v);
     }
     @Override

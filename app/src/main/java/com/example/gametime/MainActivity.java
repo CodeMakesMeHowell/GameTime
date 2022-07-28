@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gametime.firebase.FirebaseConfig;
+import com.example.gametime.firebase.FirebaseDBPaths;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://gametime-4360d-default-rtdb.firebaseio.com/");
+//    DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://gametime-4360d-default-rtdb.firebaseio.com/");
+    DatabaseReference ref = FirebaseConfig.getInstance().getDbInstance().getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         signupTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
-                Intent intent = new Intent(MainActivity.this, SelectVenueActivity.class);
+                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+//                Intent intent = new Intent(MainActivity.this, SelectVenueActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -66,13 +69,13 @@ public class MainActivity extends AppCompatActivity {
                 else
                 {
                     //search for user info
-                    ref.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    ref.child(FirebaseDBPaths.USERS.getPath()).addListenerForSingleValueEvent(new ValueEventListener() {
                         //located user with the use of username
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if(dataSnapshot.child("customer").hasChild(usernameTxt)) //checks if username matches customer
+                            if(dataSnapshot.child(FirebaseDBPaths.CUSTOMERS.getPath()).hasChild(usernameTxt)) //checks if username matches customer
                             {
-                                String getPassword = dataSnapshot.child("customer").child(usernameTxt).child("password").getValue(String.class);
+                                String getPassword = dataSnapshot.child(FirebaseDBPaths.CUSTOMERS.getPath()).child(usernameTxt).child("password").getValue(String.class);
 
                                 if(getPassword.equals(passwordTxt)){
                                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
@@ -83,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
                                 }
 
-                            } else if(dataSnapshot.child("admin").hasChild(usernameTxt)) { //checks if username matches admin
-                                String getPassword = dataSnapshot.child("admin").child(usernameTxt).child("password").getValue(String.class);
+                            } else if(dataSnapshot.child(FirebaseDBPaths.ADMINS.getPath()).hasChild(usernameTxt)) { //checks if username matches admin
+                                String getPassword = dataSnapshot.child(FirebaseDBPaths.ADMINS.getPath()).child(usernameTxt).child("password").getValue(String.class);
 
                                 if(getPassword.equals(passwordTxt)){
                                     Toast.makeText(MainActivity.this, "Logged in as Admin", Toast.LENGTH_SHORT).show();
