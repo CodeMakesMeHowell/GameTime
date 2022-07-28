@@ -64,4 +64,8 @@ public class Event implements Comparable<Event>{
     public int compareTo(Event other){
         return start_time.compareTo(other.getStart_time());
     }
+
+    public String toUIDString() {
+        return String.format("%s_%s_%s_%s", venue, name, start_time.toString(), end_time.toString());
+    }
 }

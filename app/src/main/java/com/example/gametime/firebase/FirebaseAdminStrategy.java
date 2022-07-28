@@ -1,8 +1,12 @@
 package com.example.gametime.firebase;
 
+import androidx.annotation.NonNull;
+
 import com.example.gametime.model.Event;
 import com.example.gametime.model.User;
 import com.example.gametime.model.Venue;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -19,12 +23,12 @@ class FirebaseAdminStrategy extends FirebaseAdminBehavior {
     }
 
     @Override
-    public void addVenue(Venue venue) throws GTFirebaseException {
+    public void addVenue(Venue venue, GTFirebaseListener listener) {
         //TODO
     }
 
     @Override
-    public void removeVenue(Venue venue) {
+    public void removeVenue(Venue venue, GTFirebaseListener listener) {
         //TODO
     }
 

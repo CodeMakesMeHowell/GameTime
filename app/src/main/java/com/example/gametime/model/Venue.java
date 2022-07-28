@@ -45,4 +45,8 @@ public class Venue {
     public String toString(){
         return name;
     }
+
+    public String toUIDString() {
+        return name;
+    }
 }

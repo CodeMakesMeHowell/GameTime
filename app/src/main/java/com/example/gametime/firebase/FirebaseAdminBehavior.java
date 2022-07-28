@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Specifies all methods needed for admin interaction
  * @author Nathan Wong
  */
-public abstract class FirebaseAdminBehavior extends FirebaseCustomerBehavior {
+public abstract class FirebaseAdminBehavior extends FirebaseConnector {
     public FirebaseAdminBehavior(FirebaseDatabase db) {
         super(db);
     }
