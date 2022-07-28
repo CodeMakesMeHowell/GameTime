@@ -3,14 +3,21 @@ package com.example.gametime.model;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Event {
+import java.util.ArrayList;
+
+public class Event implements Comparable<Event>{
     String name;
     String start_time;
     String end_time;
     String venue;
     int num_players;
-    public Event(){
 
+    public Event(){
+        name = "";
+        start_time = "";
+        end_time = "";
+        venue = "";
+        num_players = -1;
     }
     public Event(String name, String start_time, String end_time, String venue, int num_players){
         this.name = name;
@@ -45,5 +52,10 @@ public class Event {
         Event otherEvent = (Event)other;
         return otherEvent.name.equals(name) && otherEvent.venue.equals(venue) &&
                 otherEvent.start_time.equals(start_time) && otherEvent.end_time.equals(end_time);
+    }
+
+    @Override
+    public int compareTo(Event other){
+        return start_time.compareTo(other.getStart_time());
     }
 }
