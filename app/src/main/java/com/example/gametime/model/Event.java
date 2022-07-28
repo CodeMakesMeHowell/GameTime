@@ -8,18 +8,21 @@ public class Event {
     String start_time;
     String end_time;
     String venue;
-    private static final FirebaseDatabase database =
-            FirebaseDatabase.getInstance("https://gametime-4360d-default-rtdb.firebaseio.com/");
+    int num_players;
     public Event(){
 
     }
-    public Event(String name, String start_time, String end_time, String venue){
+    public Event(String name, String start_time, String end_time, String venue, int num_players){
         this.name = name;
         this.start_time = start_time;
         this.end_time = end_time;
         this.venue = venue;
+        this.num_players = num_players;
     }
 
+    public int getNum_players(){
+        return num_players;
+    };
     public String getName(){
         return name;
     }
@@ -34,13 +37,6 @@ public class Event {
 
     public String getVenue(){
         return venue;
-    }
-    /**
-     * Adds the event to the database
-     */
-    public void addToDb(){
-        DatabaseReference myRef = database.getReference("Events");
-        myRef.child(name).setValue(this);
     }
 
     @Override

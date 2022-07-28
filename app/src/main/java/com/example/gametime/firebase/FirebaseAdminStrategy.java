@@ -4,6 +4,7 @@ import com.example.gametime.model.Event;
 import com.example.gametime.model.User;
 import com.example.gametime.model.Venue;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -35,6 +36,11 @@ class FirebaseAdminStrategy extends FirebaseAdminBehavior {
     @Override
     public ArrayList<Venue> getVenues() {
         return null; //TODO
+    }
+
+    @Override
+    public void listenForVenues(ValueEventListener val) {
+
     }
 
     @Override

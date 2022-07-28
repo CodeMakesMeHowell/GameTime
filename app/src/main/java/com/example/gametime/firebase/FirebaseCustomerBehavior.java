@@ -4,8 +4,10 @@ import com.example.gametime.model.Event;
 import com.example.gametime.model.User;
 import com.example.gametime.model.Venue;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.EventListener;
 
 /**
  * Specifies all methods needed for customer interaction
@@ -17,6 +19,8 @@ public abstract class FirebaseCustomerBehavior extends FirebaseConnector{
     }
 
     public abstract ArrayList<Venue> getVenues();
+
+    public abstract void listenForVenues(ValueEventListener val);
 
     public abstract ArrayList<Event> getEventsForVenue(Venue venue);
 

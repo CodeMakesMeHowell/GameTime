@@ -25,7 +25,7 @@ public class Venue {
         myRef.child(name).setValue(this);
     }
 
-    public String name(){
+    public String getName(){
         return name;
     }
 
@@ -39,5 +39,10 @@ public class Venue {
     public boolean equals(Object other){
         if (other == null || !(other instanceof Venue)) return false;
         return ((Venue)other).name.equals(name);
+    }
+
+    @Override
+    public String toString(){
+        return name;
     }
 }

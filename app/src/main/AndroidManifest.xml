@@ -18,6 +18,14 @@
             android:exported="false" >
         </activity>
         <activity
+            android:name=".SelectVenueActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name=".ScheduleEventActivity"
+            android:exported="false" >
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

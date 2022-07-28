@@ -75,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
 
                                 if(getPassword.equals(passwordTxt)){
                                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(MainActivity.this, SelectVenueActivity.class);
+                                    startActivity(i);
+                                    finish();
                                 } else  {
                                     Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
                                 }
