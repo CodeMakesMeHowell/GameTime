@@ -16,26 +16,19 @@ public class User {
     String name;
     String username;
     String password;
-    ArrayList<Event> events;
+    ArrayList<String> events;
     DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://gametime-4360d-default-rtdb.firebaseio.com/");
 
     public User(){
     }
 
-    public User(String name, String username, String password){
+    public User(String name, String username, String password, boolean admin){
         this.name = name;
         this.username = username;
         this.password = password;
-        admin = true;
-    }
-
-    public User(String name, String username, String password, ArrayList<Event> events){
-        this.name = name;
-        this.username = username;
-        this.password = password;
-        this.events =  events;
-        events.add(new Event());
-        admin = false;
+        this.events = new ArrayList<String>();
+        events.add("NO EVENTS");
+        this.admin = admin;
     }
 
     public String getName(){
@@ -43,11 +36,11 @@ public class User {
     }
 
     public void addToDb(){
-        System.out.println(admin);
         if(this.admin)
         {
             ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.ADMINS.getPath()).child(username).child("name").setValue(this.name);
             ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.ADMINS.getPath()).child(username).child("password").setValue(this.password);
+            ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.ADMINS.getPath()).child(username).child("events").setValue(this.events);
         } else {
             ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.CUSTOMERS.getPath()).child(username).child("name").setValue(this.name);
             ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.CUSTOMERS.getPath()).child(username).child("password").setValue(this.password);

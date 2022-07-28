@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.gametime.firebase.FirebaseConfig;
 import com.example.gametime.firebase.FirebaseDBPaths;
+import com.example.gametime.model.User;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,6 +37,14 @@ protected static String nameTxt;
         TextView password = (TextView) findViewById(R.id.password);
 
         Button loginBtn = findViewById(R.id.loginbtn);
+
+
+        User admin = new User("Admin One", "admin1", "admin", true );
+        User admin1 = new User("Admin Two", "admin2", "admin", true );
+
+        admin.addToDb();
+        admin1.addToDb();
+
 
         //The SignUp text can be clicked
         TextView signupTxt = findViewById(R.id.SignUptxt);
@@ -91,6 +100,7 @@ protected static String nameTxt;
 
                             } else if(dataSnapshot.child(FirebaseDBPaths.ADMINS.getPath()).hasChild(usernameTxt)) { //checks if username matches admin
                                 String getPassword = dataSnapshot.child(FirebaseDBPaths.ADMINS.getPath()).child(usernameTxt).child("password").getValue(String.class);
+                                nameTxt = dataSnapshot.child(FirebaseDBPaths.ADMINS.getPath()).child(usernameTxt).child("name").getValue(String.class);
 
                                 if(getPassword.equals(passwordTxt)){
                                     Toast.makeText(MainActivity.this, "Logged in as Admin", Toast.LENGTH_SHORT).show();
