@@ -13,12 +13,12 @@ class FirebaseLoginStrategy extends FirebaseLoginBehavior {
     }
 
     @Override
-    public boolean isValidPasswordForUser(String username, String password) {
+    public boolean isValidPasswordForUser(String username, String password, GTFirebaseListener<Boolean> listener) {
         return false; //TODO
     }
 
     @Override
-    public void createUser(String username, String password) throws GTFirebaseException {
+    public void createUser(String username, String password, GTFirebaseListener listener) {
         //TODO
     }
 }

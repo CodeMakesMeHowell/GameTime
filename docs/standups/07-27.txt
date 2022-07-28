@@ -1,0 +1,56 @@
+Name: John
+
+What have you done since yesterday?
+	- Created activity for selecting venues
+  - Connected venue selecting activity to database for live updates
+
+What are you planning on doing today?
+	- Start creating the "schedule event" activity
+
+Any impediments or stumbling blocks?
+	- Handling event listeners with our current design
+  
+Name: Anna
+
+What have you done since yesterday?
+	- getting user info on to firebase
+
+What are you planning on doing today?
+	- fix up bugs/errors
+  - validating user input
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Nathan
+
+What have you done since yesterday?
+	- designed abstract classes for firebase usage
+
+What are you planning on doing today?
+	- implement methods for adding venues to database
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Arwin
+
+What have you done since yesterday?
+	- Created recycler view to display events
+
+What are you planning on doing today?
+	- Create activity to allow users to register to events
+
+Any impediments or stumbling blocks?
+	- learning how to use recycler view
+  
+Name: Steven
+
+What have you done since yesterday?
+	- Listed functions needed for user story
+
+What are you planning on doing today?
+	- Start implementing functions
+
+Any impediments or stumbling blocks?
+	- no
