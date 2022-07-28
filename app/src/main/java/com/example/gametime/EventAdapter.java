@@ -11,12 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
     String[] up_events, date;
+    private RecyclerViewClickListener listener;
     Context context;
 
-    public EventAdapter(Context context, String[] up_events, String[] date){
+    public EventAdapter(Context context, String[] up_events, String[] date, RecyclerViewClickListener listener){
         this.context = context;
         this.up_events = up_events;
         this.date = date;
+        this.listener = listener;
     }
 
     @NonNull
@@ -38,13 +40,23 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         return up_events.length;
     }
 
-    public static class EventViewHolder extends RecyclerView.ViewHolder{
+    public class EventViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView event, start;
 
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
             event = itemView.findViewById(R.id.eventview);
             start = itemView.findViewById(R.id.startview);
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            listener.onClick(itemView, getAdapterPosition());
+        }
+    }
+
+    public interface RecyclerViewClickListener{
+        void onClick(View v, int position);
     }
 }
