@@ -4,15 +4,14 @@ import java.util.Date;
 
 public class Event {
     String name;
-    Date start_time; //TODO: looks like Date class isn't supported by Firebase. We'll need to figure out an alternative - Nathan
-    Date end_time;
+    String start_time; //TODO: looks like Date class isn't supported by Firebase. We'll need to figure out an alternative - Nathan
+    String end_time;
     String venue;
-
-    public Event() {
+    int num_players;
+    public Event(){
 
     }
-
-    public Event(String name, Date start_time, Date end_time, String venue) {
+    public Event(String name, String start_time, String end_time, String venue, int num_players){
         this.name = name;
         this.start_time = start_time;
         this.end_time = end_time;
@@ -27,11 +26,11 @@ public class Event {
         return name;
     }
 
-    public Date getStart_time() {
+    public String getStart_time() {
         return start_time;
     }
 
-    public Date getEnd_time() {
+    public String getEnd_time() {
         return end_time;
     }
 
