@@ -4,8 +4,8 @@ public enum FirebaseDBPaths {
     VENUES("Venues"),
     EVENTS("Events"),
     USERS("Users"),
-    ADMINS("Admin"),
-    CUSTOMERS("Customer");
+    ADMINS("Admins"),
+    CUSTOMERS("Customers");
 
     private final String path;
 

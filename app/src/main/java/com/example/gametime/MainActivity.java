@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
+protected static String usernameTxt;
+protected static String nameTxt;
 
 //    DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://gametime-4360d-default-rtdb.firebaseio.com/");
     DatabaseReference ref = FirebaseConfig.getInstance().getDbInstance().getReference();
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String usernameTxt = username.getText().toString();
+                usernameTxt = username.getText().toString();
                 String passwordTxt = password.getText().toString();
 
                 //checks if username is empty
@@ -76,10 +78,11 @@ public class MainActivity extends AppCompatActivity {
                             if(dataSnapshot.child(FirebaseDBPaths.CUSTOMERS.getPath()).hasChild(usernameTxt)) //checks if username matches customer
                             {
                                 String getPassword = dataSnapshot.child(FirebaseDBPaths.CUSTOMERS.getPath()).child(usernameTxt).child("password").getValue(String.class);
+                                nameTxt = dataSnapshot.child(FirebaseDBPaths.CUSTOMERS.getPath()).child(usernameTxt).child("name").getValue(String.class);
 
                                 if(getPassword.equals(passwordTxt)){
                                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(MainActivity.this, SelectVenueActivity.class);
+                                    Intent i = new Intent(MainActivity.this, SelectionActivity.class);
                                     startActivity(i);
                                     finish();
                                 } else  {
@@ -91,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
 
                                 if(getPassword.equals(passwordTxt)){
                                     Toast.makeText(MainActivity.this, "Logged in as Admin", Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(MainActivity.this, SelectionActivity.class);
+                                    startActivity(i);
+                                    finish();
                                 } else  {
                                     Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
                                 }
