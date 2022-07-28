@@ -18,22 +18,22 @@ class FirebaseCustomerStrategy extends FirebaseCustomerBehavior {
     }
 
     @Override
-    public ArrayList<Venue> getVenues() {
+    public ArrayList<Venue> getVenues(GTFirebaseListener<ArrayList<Venue>> listener) {
         return null; //TODO
     }
 
     @Override
-    public ArrayList<Event> getEventsForVenue(Venue venue) {
+    public ArrayList<Event> getEventsForVenue(Venue venue, GTFirebaseListener<ArrayList<Event>> listener) {
         return null; //TODO
     }
 
     @Override
-    public void scheduleEvent(Venue venue, Event event) throws GTFirebaseException {
+    public void scheduleEvent(Venue venue, Event event, GTFirebaseListener listener) {
         //TODO
     }
 
     @Override
-    public void signUpForEvent(User user, Venue venue, Event event) throws GTFirebaseException {
+    public void signUpForEvent(User user, Venue venue, Event event, GTFirebaseListener listener) {
         //TODO
     }
 }

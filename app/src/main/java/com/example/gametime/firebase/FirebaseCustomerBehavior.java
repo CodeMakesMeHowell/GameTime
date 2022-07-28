@@ -16,11 +16,11 @@ public abstract class FirebaseCustomerBehavior extends FirebaseConnector{
         super(db);
     }
 
-    public abstract ArrayList<Venue> getVenues();
+    public abstract ArrayList<Venue> getVenues(GTFirebaseListener<ArrayList<Venue>> listener);
 
-    public abstract ArrayList<Event> getEventsForVenue(Venue venue);
+    public abstract ArrayList<Event> getEventsForVenue(Venue venue, GTFirebaseListener<ArrayList<Event>> listener);
 
-    public abstract void scheduleEvent(Venue venue, Event event) throws GTFirebaseException;
+    public abstract void scheduleEvent(Venue venue, Event event, GTFirebaseListener listener);
 
-    public abstract void signUpForEvent(User user, Venue venue, Event event) throws GTFirebaseException;
+    public abstract void signUpForEvent(User user, Venue venue, Event event, GTFirebaseListener listener);
 }
