@@ -1,5 +1,6 @@
 package com.example.gametime.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Event {
@@ -7,6 +8,7 @@ public class Event {
     Date start_time; //TODO: looks like Date class isn't supported by Firebase. We'll need to figure out an alternative - Nathan
     Date end_time;
     String venue;
+    ArrayList<User> users;
 
     public Event() {
 
@@ -17,6 +19,7 @@ public class Event {
         this.start_time = start_time;
         this.end_time = end_time;
         this.venue = venue;
+        this.users =new ArrayList<User>();
     }
 
     public String getName() {
@@ -34,6 +37,8 @@ public class Event {
     public String getVenue() {
         return venue;
     }
+
+    public ArrayList<User> getUsers(){return users;}
 
     @Override
     public boolean equals(Object other) {
