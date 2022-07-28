@@ -29,33 +29,52 @@ class FirebaseAdminStrategy extends FirebaseAdminBehavior {
     }
 
     @Override
-    public void removeEvent(Venue venue, Event event) {
-        //TODO
+    public void removeEvent(Venue venue, Event event, GTFirebaseListener listener) {
+        db.getReference(FirebaseDBPaths.EVENTS.getPath()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.hasChild(event.toUIDString())) {
+                    listener.onFailure("event do not exist");
+                } else {
+                    //db.getReference(FirebaseDBPaths.USERS.getPath()).child(;//TODO
+                    db.getReference(FirebaseDBPaths.VENUES.getPath()).child(venue.toUIDString()).child(event.toUIDString()).removeValue();
+                    db.getReference(FirebaseDBPaths.EVENTS.getPath()).child(event.toUIDString()).removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                listener.onFailure("Something went wrong with the database");
+                System.err.println(databaseError.getMessage());
+            }
+        });
+        /*
+        On an event deletion we will have to:
+            - delete the event id from signed up users
+            - delete the event from its associated venue
+            - delete the event itself
+         */
     }
 
     @Override
-    public ArrayList<Venue> getVenues() {
-        return null; //TODO
+    public ArrayList<Venue> getVenues(GTFirebaseListener<ArrayList<Venue>> listener) {
+        return null;
     }
 
     @Override
-    public void listenForVenues(ValueEventListener val) {
+    public ArrayList<Event> getEventsForVenue(Venue venue, GTFirebaseListener<ArrayList<Event>> listener) {
+        db.getReference(FirebaseDBPaths.VENUES.getPath()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {//TODO
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                listener.onFailure("Something went wrong with the database");
+                System.err.println(databaseError.getMessage());
+            }
+        });
+        return null;
     }
-
-    @Override
-    public ArrayList<Event> getEventsForVenue(Venue venue) {
-        return null; //TODO
-    }
-
-    @Override
-    public void scheduleEvent(Venue venue, Event event) throws GTFirebaseException {
-        //TODO
-    }
-
-    @Override
-    public void signUpForEvent(User user, Venue venue, Event event) throws GTFirebaseException {
-
-    }
-
 }

@@ -2,6 +2,8 @@ package com.example.gametime.model;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import java.util.ArrayList;
+import java.util.Date;
 
 import java.util.ArrayList;
 
@@ -11,6 +13,7 @@ public class Event implements Comparable<Event>{
     String end_time;
     String venue;
     int num_players;
+    ArrayList<User> users;
 
     public Event(){
         name = "";
@@ -25,6 +28,7 @@ public class Event implements Comparable<Event>{
         this.end_time = end_time;
         this.venue = venue;
         this.num_players = num_players;
+        this.users =new ArrayList<User>();
     }
 
     public int getNum_players(){
@@ -45,6 +49,8 @@ public class Event implements Comparable<Event>{
     public String getVenue(){
         return venue;
     }
+
+    public ArrayList<User> getUsers(){return users;}
 
     @Override
     public boolean equals(Object other){
