@@ -1,0 +1,58 @@
+Summary:
+- Optimized data storage 
+- Reformatted database structure
+
+Name: John
+
+What have you done since yesterday?
+	- Merging the design changes to the Venue and Event activities
+
+What are you planning on doing today?
+	- Continue working on scheduling event activity and fixing up issues from the merge
+
+Any impediments or stumbling blocks?
+	- Some strange behaviour from merge changes still need to be fixed
+  
+Name: Anna
+
+What have you done since yesterday?
+	- Implemented the admin sign in and added the venue/upcoming events activity
+
+What are you planning on doing today?
+	- Migrating the code to the fireBase files
+
+Any impediments or stumbling blocks?
+	- No
+  
+Name: Nathan
+
+What have you done since yesterday?
+	- Implemented add venue
+
+What are you planning on doing today?
+	- refactor firebase files according to new design
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Steven
+
+What have you done since yesterday?
+	- Added some functions & made a plan for AdminEventActivity
+
+What are you planning on doing today?
+	- work on AdminEventActivity
+
+Any impediments or stumbling blocks?
+	- details on  handling firebase
+  
+Name: Arwin
+
+What have you done since yesterday?
+	- Created a way to click into the items in the recyclerview.
+
+What are you planning on doing today?
+	- finding a way to integrate the firebase data with the recyclerview.
+
+Any impediments or stumbling blocks?
+	- No
