@@ -9,15 +9,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gametime.model.Event;
+
+import java.util.ArrayList;
+
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
-    String[] up_events, date;
     private RecyclerViewClickListener listener;
+    ArrayList<Event> list;
     Context context;
 
-    public EventAdapter(Context context, String[] up_events, String[] date, RecyclerViewClickListener listener){
+    public EventAdapter(Context context, ArrayList<Event> list, RecyclerViewClickListener listener){
         this.context = context;
-        this.up_events = up_events;
-        this.date = date;
+        this.list = list;
         this.listener = listener;
     }
 
@@ -31,22 +34,29 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
-        holder.event.setText(up_events[position]);
-        holder.start.setText(date[position]);
+        Event event = list.get(position);
+        holder.name.setText(event.getName());
+        holder.start_time.setText(event.getStart_time());
+        holder.end_time.setText(event.getEnd_time());
+        holder.num_players.setText(Integer.toString(event.getNum_players()));
+        holder.venue.setText(event.getVenue());
     }
 
     @Override
     public int getItemCount() {
-        return up_events.length;
+        return list.size();
     }
 
     public class EventViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView event, start;
+        TextView name, start_time, end_time, num_players, venue;
 
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
-            event = itemView.findViewById(R.id.eventview);
-            start = itemView.findViewById(R.id.startview);
+            name = itemView.findViewById(R.id.eventview);
+            start_time = itemView.findViewById(R.id.startview);
+            end_time = itemView.findViewById(R.id.endview);
+            num_players = itemView.findViewById(R.id.playersview);
+            venue = itemView.findViewById(R.id.venueview);
             itemView.setOnClickListener(this);
         }
 

@@ -1,5 +1,6 @@
 package com.example.gametime;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,12 +9,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.gametime.firebase.FirebaseDBPaths;
+import com.example.gametime.model.Event;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
 
 public class UpcomingEventsActivity extends AppCompatActivity {
 
-    String[] up_events, dates;
+    DatabaseReference database;
     private RecyclerView recyclerView;
     private EventAdapter.RecyclerViewClickListener listener;
+    ArrayList<Event> list;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(UpcomingEventsActivity.this, SelectionActivity.class));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -21,15 +39,29 @@ public class UpcomingEventsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_upcoming_events);
 
         recyclerView = findViewById(R.id.upcomingevents);
-
-        up_events = getResources().getStringArray(R.array.upcoming_events);
-        dates = getResources().getStringArray(R.array.date);
+        list = new ArrayList<>();
+        database = FirebaseDatabase.getInstance().getReference(FirebaseDBPaths.EVENTS.getPath());
 
         setOnClickListener();
-        EventAdapter adapter = new EventAdapter(this, up_events, dates, listener);
+        EventAdapter adapter = new EventAdapter(this, list, listener);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Event event = dataSnapshot.getValue(Event.class);
+                    list.add(event);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void setOnClickListener() {
@@ -37,8 +69,12 @@ public class UpcomingEventsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v, int position) {
                 Intent intent = new Intent(getApplicationContext(), EventActivity.class);
-                intent.putExtra("event", up_events[position]);
-                intent.putExtra("start", dates[position]);
+                Event event = list.get(position);
+                intent.putExtra("name", event.getName());
+                intent.putExtra("start_time", event.getStart_time());
+                intent.putExtra("end_time", event.getEnd_time());
+                intent.putExtra("num_players", Integer.toString(event.getNum_players()));
+                intent.putExtra("venue", event.getVenue());
                 startActivity(intent);
             }
         };

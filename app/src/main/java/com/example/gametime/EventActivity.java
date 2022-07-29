@@ -10,19 +10,27 @@ public class EventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_info_activity);
-        TextView eventTxt = findViewById(R.id.event_info);
-        TextView startTxt = findViewById(R.id.start_info);
+        TextView eventTxt = findViewById(R.id.eventinfo);
+        TextView startTxt = findViewById(R.id.startinfo);
+        TextView endTxt = findViewById(R.id.endinfo);
+        TextView venueTxt = findViewById(R.id.venueinfo);
 
-        String event = "N/A";
-        String start = "??";
+        String event = "";
+        String start = "";
+        String end = "";
+        String venue = "";
 
         Bundle extras = getIntent().getExtras();
         if(extras != null){
-            event = extras.getString("event");
-            start = extras.getString("start");
+            event = extras.getString("name");
+            start = extras.getString("start_time");
+            end = extras.getString("end_time");
+            venue = extras.getString("venue");
         }
 
         eventTxt.setText(event);
         startTxt.setText(start);
+        endTxt.setText(end);
+        venueTxt.setText(venue);
     }
 }

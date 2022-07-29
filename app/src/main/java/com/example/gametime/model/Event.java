@@ -24,6 +24,20 @@ public class Event implements Comparable<Event>{
         num_players = -1;
         activity = "";
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "name='" + name + '\'' +
+                ", activity='" + activity + '\'' +
+                ", start_time='" + start_time + '\'' +
+                ", end_time='" + end_time + '\'' +
+                ", venue='" + venue + '\'' +
+                ", num_players=" + num_players +
+                ", users=" + users +
+                '}';
+    }
+
     public Event(String name, String start_time, String end_time, String venue, int num_players,
                  String activity, ArrayList<User> users){
         this.name = name;
