@@ -1,0 +1,56 @@
+Name: John
+
+What have you done since yesterday?
+	- Connected the schedule event activity to firebase
+
+What are you planning on doing today?
+	- add input validation for event scheduling
+
+Any impediments or stumbling blocks?
+	- no
+
+Name: Anna
+
+What have you done since yesterday?
+	- re-linked activities together
+	- rearranged database for user info 
+
+What are you planning on doing today?
+	- refactor admin information & optimizing database queries for user info
+
+Any impediments or stumbling blocks?
+	- data standardization 
+
+Name: Nathan
+
+What have you done since yesterday?
+	- Worked on add venue activity
+
+What are you planning on doing today?
+	- finish up add venue activity
+
+Any impediments or stumbling blocks?
+	- no
+
+Name: Arwin
+
+What have you done since yesterday?
+	- integrated firebase data with upcoming events list
+
+What are you planning on doing today?
+	- fix UI for upcoming events list
+	- start working on user story # 4
+
+Any impediments or stumbling blocks?
+	- working with firebase
+
+Name: Steven
+
+What have you done since yesterday?
+	- work on AdminEventActivity
+
+What are you planning on doing today?
+	- continue working on AdminEventActivity
+
+Any impediments or stumbling blocks?
+	- no
