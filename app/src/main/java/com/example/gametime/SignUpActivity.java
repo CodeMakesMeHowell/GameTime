@@ -71,14 +71,14 @@ public class SignUpActivity extends AppCompatActivity {
                     editTextRegisterPassword.setError("Password is required");
                     editTextRegisterPassword.requestFocus();
                 } else  {
-                        ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.CUSTOMERS.getPath()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        ref.child(FirebaseDBPaths.USERS.getPath()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.hasChild(usernameTxt))
                             {
                                 Toast.makeText(SignUpActivity.this, "Username is already taken. Please enter another username.", Toast.LENGTH_LONG).show();
                             } else  {
-                                User newUser = new User(fullNameTxt, usernameTxt, passwordTxt, new ArrayList<String>());
+                                User newUser = new User(false, fullNameTxt, usernameTxt, passwordTxt,  new ArrayList<String>());
                                 newUser.addToDb();
 
                                 Toast.makeText(SignUpActivity.this, "Registered successfully!", Toast.LENGTH_LONG).show();

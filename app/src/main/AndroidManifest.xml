@@ -18,13 +18,13 @@
             android:exported="false" />
         <activity
             android:name=".SelectionActivity"
-            android:exported="false" />
+            android:exported="false" ></activity>
         <activity
             android:name=".AdminEventActivity"
-            android:exported="false" />
+            android:exported="false" ></activity>
         <activity
             android:name=".SignUpActivity"
-            android:exported="false" />
+            android:exported="false" ></activity>
         <activity
             android:name=".SelectVenueActivity"
             android:exported="false" />

@@ -26,7 +26,6 @@ public class SelectionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(SelectionActivity.this, SelectVenueActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -35,7 +34,6 @@ public class SelectionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(SelectionActivity.this, UpcomingEventsActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
     }

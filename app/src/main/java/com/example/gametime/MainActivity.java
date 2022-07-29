@@ -2,6 +2,8 @@ package com.example.gametime;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.OnLifecycleEvent;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     protected static String usernameTxt;
     protected static String nameTxt;
@@ -38,14 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button loginBtn = findViewById(R.id.loginbtn);
 
-
-        User admin = new User("Admin One", "admin1", "admin", true );
-        User admin1 = new User("Admin Two", "admin2", "admin", true );
-
-        admin.addToDb();
-        admin1.addToDb();
-
-
         //The SignUp text can be clicked
         TextView signupTxt = findViewById(R.id.SignUptxt);
 
@@ -55,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
 //                Intent intent = new Intent(MainActivity.this, SelectVenueActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -84,30 +79,15 @@ public class MainActivity extends AppCompatActivity {
                         //located user with the use of username
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if(dataSnapshot.child(FirebaseDBPaths.CUSTOMERS.getPath()).hasChild(usernameTxt)) //checks if username matches customer
+                            if(dataSnapshot.hasChild(usernameTxt)) //checks if username matches customer
                             {
-                                String getPassword = dataSnapshot.child(FirebaseDBPaths.CUSTOMERS.getPath()).child(usernameTxt).child("password").getValue(String.class);
-                                nameTxt = dataSnapshot.child(FirebaseDBPaths.CUSTOMERS.getPath()).child(usernameTxt).child("name").getValue(String.class);
+                                String getPassword = dataSnapshot.child(usernameTxt).child("password").getValue(String.class);
+                                nameTxt = dataSnapshot.child(usernameTxt).child("name").getValue(String.class);
 
                                 if(getPassword.equals(passwordTxt)){
-                                    DataSnapshot userSnap = dataSnapshot.child(FirebaseDBPaths.CUSTOMERS.getPath()).child(usernameTxt);
+                                    DataSnapshot userSnap = dataSnapshot.child(usernameTxt);
                                     User.currentUser = User.userFromSnapshot(userSnap);
                                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(MainActivity.this, SelectionActivity.class);
-                                    startActivity(i);
-                                    finish();
-                                } else  {
-                                    Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
-                                }
-
-                            } else if(dataSnapshot.child(FirebaseDBPaths.ADMINS.getPath()).hasChild(usernameTxt)) { //checks if username matches admin
-                                String getPassword = dataSnapshot.child(FirebaseDBPaths.ADMINS.getPath()).child(usernameTxt).child("password").getValue(String.class);
-                                nameTxt = dataSnapshot.child(FirebaseDBPaths.ADMINS.getPath()).child(usernameTxt).child("name").getValue(String.class);
-
-                                if(getPassword.equals(passwordTxt)){
-                                    DataSnapshot userSnap = dataSnapshot.child(FirebaseDBPaths.ADMINS.getPath()).child(usernameTxt);
-                                    User.currentUser = User.userFromSnapshot(userSnap);
-                                    Toast.makeText(MainActivity.this, "Logged in as Admin", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(MainActivity.this, SelectionActivity.class);
                                     startActivity(i);
                                     finish();
@@ -121,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-
                         }
                     });
                 }

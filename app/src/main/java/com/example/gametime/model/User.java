@@ -32,20 +32,13 @@ public class User {
         admin = true;
     }
 
-    public User(String name, String username, String password, ArrayList<String> events){
-        this.name = name;
-        this.username = username;
-        this.password = password;
-        this.events =  events;
-        admin = false;
-    }
-
     public User(boolean admin, String name, String username, String password, ArrayList<String> events) {
         this.admin = admin;
         this.name = name;
         this.username = username;
         this.password = password;
         this.events = events;
+        events.add("NO EVENTS");
     }
 
     public boolean isAdmin() {
@@ -67,16 +60,10 @@ public class User {
     public void addToDb(){
         DatabaseReference ref = FirebaseConfig.getInstance().getDbInstance().getReference();
 
-        if(this.admin) //TODO apart from admin boolean this should set the name, password, and events the same way
-        {
-            ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.ADMINS.getPath()).child(username).child("name").setValue(this.name);
-            ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.ADMINS.getPath()).child(username).child("password").setValue(this.password);
-            ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.ADMINS.getPath()).child(username).child("events").setValue(this.events);
-        } else {
-            ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.CUSTOMERS.getPath()).child(username).child("name").setValue(this.name);
-            ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.CUSTOMERS.getPath()).child(username).child("password").setValue(this.password);
-            ref.child(FirebaseDBPaths.USERS.getPath()).child(FirebaseDBPaths.CUSTOMERS.getPath()).child(username).child("events").setValue(this.events);
-        }
+        ref.child(FirebaseDBPaths.USERS.getPath()).child(username).child("name").setValue(this.name);
+        ref.child(FirebaseDBPaths.USERS.getPath()).child(username).child("password").setValue(this.password);
+        ref.child(FirebaseDBPaths.USERS.getPath()).child(username).child("events").setValue(this.events);
+        ref.child(FirebaseDBPaths.USERS.getPath()).child(username).child("admin").setValue(this.admin);
     }
 
     public static User userFromSnapshot(DataSnapshot userSnapshot) {
