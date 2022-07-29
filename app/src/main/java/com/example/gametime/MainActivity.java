@@ -1,33 +1,19 @@
 package com.example.gametime;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gametime.firebase.FirebaseConfig;
-import com.example.gametime.firebase.FirebaseDBPaths;
-import com.example.gametime.model.User;
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-protected static String usernameTxt;
-protected static String nameTxt;
 
-//    DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://gametime-4360d-default-rtdb.firebaseio.com/");
-    DatabaseReference ref = FirebaseConfig.getInstance().getDbInstance().getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,90 +22,46 @@ protected static String nameTxt;
         TextView username = (TextView) findViewById(R.id.username);
         TextView password = (TextView) findViewById(R.id.password);
 
-        Button loginBtn = findViewById(R.id.loginbtn);
+        MaterialButton loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
 
-
-        User admin = new User("Admin One", "admin1", "admin", true );
-        User admin1 = new User("Admin Two", "admin2", "admin", true );
-
-        admin.addToDb();
-        admin1.addToDb();
-
+        //testing database REMOVE
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://gametime-4360d-default-rtdb.firebaseio.com/");
+        DatabaseReference myRef = database.getReference("message");
+        myRef.setValue("Hello, World!");
 
         //The SignUp text can be clicked
-        TextView signupTxt = findViewById(R.id.SignUptxt);
+        TextView signuptxt = findViewById(R.id.SignUptxt);
+        TextView upcoming = findViewById(R.id.Upcoming);
 
-        signupTxt.setOnClickListener(new View.OnClickListener() {
+        signuptxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
-//                Intent intent = new Intent(MainActivity.this, SelectVenueActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-        //Login user
-        loginBtn.setOnClickListener(new View.OnClickListener() {
+        upcoming.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UpcomingEventsActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        //purely checking if textboxes are working and can save data from them
+        //admin and admin is the username/password
+
+        loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usernameTxt = username.getText().toString();
-                String passwordTxt = password.getText().toString();
-
-                //checks if username is empty
-                if (TextUtils.isEmpty(usernameTxt)){
-                    Toast.makeText(MainActivity.this, "Please enter a username", Toast.LENGTH_SHORT).show();
-                    username.setError("Username required");
-                    username.requestFocus();
-                } else if (TextUtils.isEmpty(passwordTxt)) //checks if password is empty
+                if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin"))
                 {
-                    Toast.makeText(MainActivity.this, "Please enter a password", Toast.LENGTH_SHORT).show();
-                    password.setError("Password required");
-                    password.requestFocus();
-                }
-                else
-                {
-                    //search for user info
-                    ref.child(FirebaseDBPaths.USERS.getPath()).addListenerForSingleValueEvent(new ValueEventListener() {
-                        //located user with the use of username
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if(dataSnapshot.child(FirebaseDBPaths.CUSTOMERS.getPath()).hasChild(usernameTxt)) //checks if username matches customer
-                            {
-                                String getPassword = dataSnapshot.child(FirebaseDBPaths.CUSTOMERS.getPath()).child(usernameTxt).child("password").getValue(String.class);
-                                nameTxt = dataSnapshot.child(FirebaseDBPaths.CUSTOMERS.getPath()).child(usernameTxt).child("name").getValue(String.class);
-
-                                if(getPassword.equals(passwordTxt)){
-                                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(MainActivity.this, SelectionActivity.class);
-                                    startActivity(i);
-                                    finish();
-                                } else  {
-                                    Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
-                                }
-
-                            } else if(dataSnapshot.child(FirebaseDBPaths.ADMINS.getPath()).hasChild(usernameTxt)) { //checks if username matches admin
-                                String getPassword = dataSnapshot.child(FirebaseDBPaths.ADMINS.getPath()).child(usernameTxt).child("password").getValue(String.class);
-                                nameTxt = dataSnapshot.child(FirebaseDBPaths.ADMINS.getPath()).child(usernameTxt).child("name").getValue(String.class);
-
-                                if(getPassword.equals(passwordTxt)){
-                                    Toast.makeText(MainActivity.this, "Logged in as Admin", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(MainActivity.this, SelectionActivity.class);
-                                    startActivity(i);
-                                    finish();
-                                } else  {
-                                    Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
-                                }
-                            } else  { //no username found
-                                Toast.makeText(MainActivity.this, "There is no account with this username", Toast.LENGTH_SHORT).show();
-                              }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
+                    Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this, "LOGIN FAILED !!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
