@@ -19,11 +19,21 @@ public class SelectionActivity extends AppCompatActivity {
         displayName.setText(MainActivity.nameTxt);
 
         Button venueBtn = findViewById(R.id.venueButton);
+        Button upcomingBtn = findViewById(R.id.upcomingEventsButton);
 
         venueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SelectionActivity.this, SelectVenueActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        upcomingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SelectionActivity.this, UpcomingEventsActivity.class);
                 startActivity(intent);
                 finish();
             }
