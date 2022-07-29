@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class Event implements Comparable<Event>{
     String name;
+    String activity;
     String start_time;
     String end_time;
     String venue;

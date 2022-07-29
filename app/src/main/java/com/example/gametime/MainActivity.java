@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
                                 nameTxt = dataSnapshot.child(FirebaseDBPaths.CUSTOMERS.getPath()).child(usernameTxt).child("name").getValue(String.class);
 
                                 if(getPassword.equals(passwordTxt)){
+                                    DataSnapshot userSnap = dataSnapshot.child(FirebaseDBPaths.CUSTOMERS.getPath()).child(usernameTxt);
+                                    User.currentUser = User.userFromSnapshot(userSnap);
                                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(MainActivity.this, SelectionActivity.class);
                                     startActivity(i);
@@ -103,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
                                 nameTxt = dataSnapshot.child(FirebaseDBPaths.ADMINS.getPath()).child(usernameTxt).child("name").getValue(String.class);
 
                                 if(getPassword.equals(passwordTxt)){
+                                    DataSnapshot userSnap = dataSnapshot.child(FirebaseDBPaths.ADMINS.getPath()).child(usernameTxt);
+                                    User.currentUser = User.userFromSnapshot(userSnap);
                                     Toast.makeText(MainActivity.this, "Logged in as Admin", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(MainActivity.this, SelectionActivity.class);
                                     startActivity(i);

@@ -3,16 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/16472/Documents/GitHub/GameTime/app/src/main/res/layout/activity_event_info.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/16472/Documents/GitHub/GameTime/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/16472/Documents/GitHub/GameTime/app/src/main/res/layout/activity_sign_up.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/16472/Documents/GitHub/GameTime/app/src/main/res/layout/activity_upcoming_events.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/16472/Documents/GitHub/GameTime/app/src/main/res/layout/event.xml" value="0.365625" />
-        <entry key="..\:/Users/16472/Documents/GitHub/GameTime/app/src/main/res/layout/event_info_activity.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/16472/Documents/GitHub/GameTime/app/src/main/res/layout/test.xml" value="0.365625" />
-        <entry key="..\:/Users/Arwin/StudioProjects/GameTime/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/Arwin/StudioProjects/GameTime/app/src/main/res/layout/activity_selection.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/Arwin/StudioProjects/GameTime/app/src/main/res/layout/event.xml" value="0.18802083333333333" />
+        <entry key="..\:/Programming/CSCB07/GameTime/app/src/main/res/layout/activity_create_venue.xml" value="0.2536231884057971" />
+        <entry key="..\:/Programming/CSCB07/GameTime/app/src/main/res/layout/activity_selection.xml" value="0.1884498480243161" />
+        <entry key="..\:/Programming/CSCB07/GameTime/app/src/main/res/layout/activity_sign_up.xml" value="0.3" />
+        <entry key="..\:/Programming/CSCB07/GameTime/app/src/main/res/layout/activity_upcoming_events.xml" value="0.1884498480243161" />
+        <entry key="..\:/Programming/CSCB07/GameTime/app/src/main/res/layout/activity_venue_list.xml" value="0.3" />
+        <entry key="..\:/Programming/CSCB07/GameTime/app/src/main/res/layout/activity_venues.xml" value="0.4" />
+        <entry key="..\:/Programming/CSCB07/GameTime/app/src/main/res/layout/event.xml" value="0.33" />
+        <entry key="..\:/Programming/CSCB07/GameTime/app/src/main/res/layout/event_info_activity.xml" value="0.1802536231884058" />
+        <entry key="..\:/Programming/CSCB07/GameTime/app/src/main/res/layout/venue_activity_info.xml" value="0.5" />
+        <entry key="..\:/Programming/CSCB07/GameTime/app/src/main/res/layout/venue_row.xml" value="0.36" />
         <entry key="..\:/Users/anna_/OneDrive/Desktop/Uni/CSCB07/Project FInal/GameTime/app/src/main/res/drawable/ic_baseline_short_text_24.xml" value="0.33" />
         <entry key="..\:/Users/anna_/OneDrive/Desktop/Uni/CSCB07/Project FInal/GameTime/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/anna_/OneDrive/Desktop/Uni/CSCB07/Project FInal/GameTime/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />

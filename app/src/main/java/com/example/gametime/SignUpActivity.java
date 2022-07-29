@@ -78,7 +78,7 @@ public class SignUpActivity extends AppCompatActivity {
                             {
                                 Toast.makeText(SignUpActivity.this, "Username is already taken. Please enter another username.", Toast.LENGTH_LONG).show();
                             } else  {
-                                User newUser = new User(fullNameTxt, usernameTxt, passwordTxt, false);
+                                User newUser = new User(fullNameTxt, usernameTxt, passwordTxt, new ArrayList<String>());
                                 newUser.addToDb();
 
                                 Toast.makeText(SignUpActivity.this, "Registered successfully!", Toast.LENGTH_LONG).show();

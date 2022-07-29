@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.gametime.firebase.FirebaseConfig;
 import com.example.gametime.firebase.FirebaseCustomerBehavior;
 import com.example.gametime.firebase.FirebaseCustomerStrategy;
+import com.example.gametime.model.User;
 import com.example.gametime.model.Venue;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -51,6 +53,9 @@ public class SelectVenueActivity extends AppCompatActivity implements VenueAdapt
             }
         };
         FirebaseConfig.getInstance().customerBehavior.listenForVenues(val);
+
+        Button addVenueBtn = (Button) findViewById(R.id.addVenueBtn);
+        addVenueBtn.setVisibility(User.currentUser.isAdmin() ? View.VISIBLE : View.GONE);
     }
     @Override
     public void onItemClick(View view, int position) {
@@ -58,5 +63,9 @@ public class SelectVenueActivity extends AppCompatActivity implements VenueAdapt
         i.putExtra("venue_name", adapter.getItem(position).getName());
         i.putExtra("activities", adapter.getItem(position).getActivities());
         startActivity(i);
+    }
+    public void onAddVenueBtnClick(View view) {
+        Intent intent = new Intent(this, CreateVenueActivity.class);
+        startActivity(intent);
     }
 }

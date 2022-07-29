@@ -14,6 +14,9 @@
         android:theme="@style/Theme.GameTime"
         tools:targetApi="31">
         <activity
+            android:name=".CreateVenueActivity"
+            android:exported="false" />
+        <activity
             android:name=".SelectionActivity"
             android:exported="false" />
         <activity
@@ -24,10 +27,10 @@
             android:exported="false" />
         <activity
             android:name=".SelectVenueActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".ScheduleEventActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -39,16 +42,13 @@
         </activity>
         <activity
             android:name=".UpcomingEventsActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" >
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
-
         </activity>
-        <activity android:name=".EventActivity">
-
-        </activity>
+        <activity android:name=".EventActivity" />
     </application>
 
 </manifest>

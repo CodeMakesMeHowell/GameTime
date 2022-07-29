@@ -13,6 +13,8 @@
     <string name="signUpPrompt">Don\'t have an account?</string>
     <string name="signUplbl">Sign Up</string>
 
+    <string name="addVenueBtnTxt">Add Venue</string>
+
     <string-array name="UserTypes">
         <item>Customer</item>
         <item>Admin</item>
