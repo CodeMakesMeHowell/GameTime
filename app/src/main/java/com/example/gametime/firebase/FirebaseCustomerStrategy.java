@@ -45,7 +45,8 @@ public class FirebaseCustomerStrategy extends FirebaseCustomerBehavior {
 
     @Override
     public void scheduleEvent(Venue venue, Event event) throws GTFirebaseException {
-        //TODO
+        DatabaseReference ref = db.getReference(FirebaseDBPaths.EVENTS.getPath());
+        ref.child(event.toUIDString()).setValue(event);
     }
 
     private void getEventByID(String id){

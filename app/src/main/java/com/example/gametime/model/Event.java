@@ -22,14 +22,18 @@ public class Event implements Comparable<Event>{
         end_time = "";
         venue = "";
         num_players = -1;
+        activity = "";
     }
-    public Event(String name, String start_time, String end_time, String venue, int num_players){
+    public Event(String name, String start_time, String end_time, String venue, int num_players,
+                 String activity, ArrayList<User> users){
         this.name = name;
         this.start_time = start_time;
         this.end_time = end_time;
         this.venue = venue;
         this.num_players = num_players;
         this.users =new ArrayList<User>();
+        this.activity = activity;
+        this.users = users;
     }
 
     public int getNum_players(){

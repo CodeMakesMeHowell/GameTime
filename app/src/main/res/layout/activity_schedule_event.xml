@@ -6,15 +6,13 @@
     android:layout_height="match_parent">
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="211dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
+        android:id="@+id/activity_type_spinner"
+        android:layout_width="165dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EventName"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
@@ -23,66 +21,108 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
+        android:hint="@string/event_name_placeholder"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Name"
+        android:text="@string/event_name_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
-
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EventName" />
-
-    <EditText
-        android:id="@+id/startTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
-
-    <EditText
-        android:id="@+id/numPlayers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/endTime" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:text="Button"
+        android:layout_marginBottom="16dp"
+        android:onClick="scheduleEvent"
+        android:text="@string/create_event_button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numPlayers" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/endTime"
+    <Button
+        android:id="@+id/select_date_button"
+        android:layout_width="151dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="displayDatePicker"
+        android:text="@string/pick_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_type_spinner" />
+
+    <TextView
+        android:id="@+id/selected_date"
+        android:layout_width="203dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/date_placeholder"
+        app:layout_constraintEnd_toStartOf="@+id/select_date_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_type_spinner" />
+
+    <Button
+        android:id="@+id/select_start_time_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="time"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="20dp"
+        android:onClick="displayTimePicker"
+        android:text="@string/time_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_date_button" />
+
+    <TextView
+        android:id="@+id/start_time"
+        android:layout_width="203dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="108dp"
+        android:text="@string/start_time"
+        app:layout_constraintEnd_toStartOf="@+id/select_start_time_button"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startTime" />
+        app:layout_constraintTop_toBottomOf="@+id/selected_date" />
+
+    <TextView
+        android:id="@+id/end_time"
+        android:layout_width="203dp"
+        android:layout_height="64dp"
+        android:text="@string/end_time"
+        app:layout_constraintBottom_toTopOf="@+id/num_players_input"
+        app:layout_constraintEnd_toStartOf="@+id/select_end_time_button"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_time"
+        app:layout_constraintVertical_bias="0.65" />
+
+    <Button
+        android:id="@+id/select_end_time_button"
+        android:layout_width="114dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:onClick="displayTimePicker"
+        android:text="@string/time_button"
+        app:layout_constraintBottom_toTopOf="@+id/num_players_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_start_time_button"
+        app:layout_constraintVertical_bias="0.546" />
+
+    <EditText
+        android:id="@+id/num_players_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:ems="10"
+        android:hint="@string/number_of_players"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/done"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
