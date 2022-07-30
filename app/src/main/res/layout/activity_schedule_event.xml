@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
     <Spinner
         android:id="@+id/activity_type_spinner"
         android:layout_width="165dp"
         android:layout_height="56dp"
         android:layout_marginTop="28dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.703"
         app:layout_constraintStart_toEndOf="@+id/textView2"
@@ -43,8 +45,8 @@
 
     <Button
         android:id="@+id/select_date_button"
-        android:layout_width="151dp"
-        android:layout_height="58dp"
+        android:layout_width="135dp"
+        android:layout_height="57dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="16dp"
         android:onClick="displayDatePicker"
@@ -59,7 +61,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="16dp"
+        android:gravity="center_vertical"
         android:text="@string/date_placeholder"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/select_date_button"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +73,7 @@
         android:id="@+id/select_start_time_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="20dp"
         android:onClick="displayTimePicker"
         android:text="@string/time_button"
@@ -80,10 +84,12 @@
         android:id="@+id/start_time"
         android:layout_width="203dp"
         android:layout_height="64dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="60dp"
+        android:gravity="center_vertical"
         android:text="@string/start_time"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/select_start_time_button"
-        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selected_date" />
 
@@ -91,13 +97,15 @@
         android:id="@+id/end_time"
         android:layout_width="203dp"
         android:layout_height="64dp"
+        android:gravity="center_vertical"
         android:text="@string/end_time"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/num_players_input"
         app:layout_constraintEnd_toStartOf="@+id/select_end_time_button"
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/start_time"
-        app:layout_constraintVertical_bias="0.65" />
+        app:layout_constraintVertical_bias="0.397" />
 
     <Button
         android:id="@+id/select_end_time_button"
@@ -110,7 +118,7 @@
         app:layout_constraintBottom_toTopOf="@+id/num_players_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/select_start_time_button"
-        app:layout_constraintVertical_bias="0.546" />
+        app:layout_constraintVertical_bias="0.262" />
 
     <EditText
         android:id="@+id/num_players_input"
@@ -132,6 +140,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:text="@string/activity_prompt"
+        android:gravity="center_vertical"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EventName" />
 
