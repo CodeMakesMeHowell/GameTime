@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class UpcomingEventsActivity extends AppCompatActivity {
@@ -54,6 +55,7 @@ public class UpcomingEventsActivity extends AppCompatActivity {
                     Event event = dataSnapshot.getValue(Event.class);
                     list.add(event);
                 }
+                Collections.sort(list);
                 adapter.notifyDataSetChanged();
             }
 
