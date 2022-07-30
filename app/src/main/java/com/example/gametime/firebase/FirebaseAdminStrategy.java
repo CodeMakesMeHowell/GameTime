@@ -24,7 +24,33 @@ class FirebaseAdminStrategy extends FirebaseAdminBehavior {
 
     @Override
     public void addVenue(Venue venue, GTFirebaseListener listener) {
-        //TODO
+        if(venue == null) {
+            listener.onFailure("Failed to get valid venue object (nullReference)");
+            return;
+        } else if (venue.getName().length() == 0) {
+            listener.onFailure("Failed: Venue name cannot be empty!");
+            return;
+        }
+
+        db.getReference(FirebaseDBPaths.VENUES.getPath()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChild(venue.toUIDString())) {
+                    listener.onFailure("Failed: A venue with the same name already exists!");
+                } else {
+                    dataSnapshot.child(venue.toUIDString()).getRef().setValue(venue).addOnCompleteListener((task) -> {
+                        listener.onComplete(null);
+                    }).addOnFailureListener((task) -> {
+                        listener.onFailure("Failed: something went wrong with the database :(");
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                listener.onFailure("Failed: something went wrong with the database :(");
+            }
+        });
     }
 
     @Override

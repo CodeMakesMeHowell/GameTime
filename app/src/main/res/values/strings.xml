@@ -22,6 +22,13 @@
     <string name="start_time">Select start time</string>
     <string name="addVenueBtnTxt">Add Venue</string>
 
+    <string name="venueNameInputTxt">Venue Name</string>
+    <string name="create_venue_act_header">Activities</string>
+    <string name="add_activity_btn_txt">Add Activity</string>
+    <string name="create_venue_btn_txt">Create Venue</string>
+    <string name="delete_prompt">Delete</string>
+    <string name="activity_name_input_txt">Activity Name</string>
+
     <string-array name="UserTypes">
         <item>Customer</item>
         <item>Admin</item>

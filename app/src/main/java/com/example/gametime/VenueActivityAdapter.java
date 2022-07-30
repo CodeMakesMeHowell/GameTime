@@ -30,15 +30,13 @@ public class VenueActivityAdapter extends RecyclerView.Adapter<VenueActivityAdap
             nameTxt = view.findViewById(R.id.holderActivityNameTxt);
             button = view.findViewById(R.id.activityDeleteBtn);
 
-            System.out.println(button);
-
-//            button.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    activities.remove(nameTxt.getText());
-//                    notifyDataSetChanged();
-//                }
-//            });
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    activities.remove(nameTxt.getText());
+                    notifyDataSetChanged();
+                }
+            });
         }
     }
 
@@ -52,9 +50,6 @@ public class VenueActivityAdapter extends RecyclerView.Adapter<VenueActivityAdap
     @Override
     public void onBindViewHolder(@NonNull ActivityViewHolder holder, int position) {
         String activityName = activities.get(position);
-        System.out.println(activityName);
-        System.out.println(holder.nameTxt);
-
         holder.nameTxt.setText(activityName);
     }
 

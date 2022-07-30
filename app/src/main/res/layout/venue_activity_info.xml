@@ -18,13 +18,16 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:foregroundGravity="center_vertical|center|center_horizontal"
+            android:gravity="center|center_horizontal|center_vertical"
             android:text="TextView" />
 
         <Button
             android:id="@+id/activityDeleteBtn"
             android:layout_width="113dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@android:color/holo_red_dark"
+            android:text="@string/delete_prompt" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
