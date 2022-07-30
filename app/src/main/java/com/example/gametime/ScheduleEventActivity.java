@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -17,7 +18,10 @@ import com.example.gametime.firebase.GTFirebaseException;
 import com.example.gametime.model.Event;
 import com.example.gametime.model.User;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.regex.Pattern;
 
 public class ScheduleEventActivity extends AppCompatActivity{
 
@@ -37,15 +41,78 @@ public class ScheduleEventActivity extends AppCompatActivity{
         String eventName = ((EditText) findViewById(R.id.EventName)).getText().toString();
     }
 
+    public void badInput(String msg){
+        Toast.makeText(ScheduleEventActivity.this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public void clearErrors(){
+        ((TextView)findViewById(R.id.selected_date)).setError(null);
+        ((TextView)findViewById(R.id.start_time)).setError(null);
+        ((TextView)findViewById(R.id.end_time)).setError(null);
+        ((EditText)findViewById(R.id.num_players_input)).setError(null);
+        ((EditText)findViewById(R.id.EventName)).setError(null);
+    }
+
     public void scheduleEvent(View view){
-        String event_name = ((EditText)findViewById(R.id.EventName)).getText().toString();
+
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd-HH:mm");
+        Date curr_date = new Date(System.currentTimeMillis());
+
         String date = ((TextView)findViewById(R.id.selected_date)).getText().toString();
-        String start_time = date +
-                "-" + ((TextView)findViewById(R.id.start_time)).getText().toString();
-        String end_time = date +
-                "-" +  ((TextView)findViewById(R.id.end_time)).getText().toString();
-        int num_players = Integer.parseInt(
-                ((EditText)findViewById(R.id.num_players_input)).getText().toString());
+        Pattern date_pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
+        Pattern time_pattern = Pattern.compile("\\d{2}:\\d{2}");
+        Pattern event_pattern = Pattern.compile("\\w+");
+        String event_name = ((EditText)findViewById(R.id.EventName)).getText().toString();;
+        if(!event_pattern.matcher(event_name).matches()){
+            badInput("Invalid event name");
+            clearErrors();
+            ((EditText)findViewById(R.id.EventName)).setError("Invalid name");
+            return;
+        }
+
+        if(!date_pattern.matcher(date).matches()){
+            badInput("Please enter event date");
+            clearErrors();
+            ((TextView)findViewById(R.id.selected_date)).setError("Enter date");
+            return;
+        }
+
+        String start_time = ((TextView)findViewById(R.id.start_time)).getText().toString();
+        if(!time_pattern.matcher(start_time).matches()){
+            badInput("Please enter event start time");
+            clearErrors();
+            ((TextView)findViewById(R.id.start_time)).setError("Enter time");
+            return;
+        }
+        start_time = date + "-" + start_time;
+        if(start_time.compareTo(formatter.format(curr_date)) < 0){
+            clearErrors();
+            badInput("Event start time cannot be in the past");
+            return;
+        }
+        String end_time = ((TextView)findViewById(R.id.end_time)).getText().toString();
+        if(!time_pattern.matcher(end_time).matches()){
+            badInput("Please enter event end time");
+            clearErrors();
+            ((TextView)findViewById(R.id.end_time)).setError("Enter time");
+            return;
+        }
+        end_time = date + "-" +  end_time;
+        if(end_time.compareTo(start_time)< 0){
+            clearErrors();
+            badInput("End time cannot be before start time");
+            return;
+        }
+        String num_players_input = ((EditText)findViewById(R.id.num_players_input)).getText().toString();
+
+        if(!num_players_input.matches("\\d+")){
+            badInput("Please enter the number of players");
+            clearErrors();
+            ((EditText)findViewById(R.id.num_players_input)).setError("Enter number of players");
+            return;
+        }
+        int num_players = Integer.parseInt(num_players_input);
+
         String activity_type = ((Spinner)findViewById(
                 R.id.activity_type_spinner)).getSelectedItem().toString();
         Event event = new Event(event_name, start_time, end_time, venue, num_players, activity_type, null);
