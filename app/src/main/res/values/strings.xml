@@ -16,6 +16,7 @@
     <string name="date_placeholder">Select the event\'s date</string>
     <string name="event_name_placeholder">Event name</string>
     <string name="create_event_button">Create Event</string>
+    <string name="activity_prompt">Select event activity</string>
     <string name="time_button">Pick time</string>
     <string name="number_of_players">Number of players</string>
     <string name="end_time">Select end time</string>

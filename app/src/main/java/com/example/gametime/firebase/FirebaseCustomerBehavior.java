@@ -24,7 +24,7 @@ public abstract class FirebaseCustomerBehavior extends FirebaseConnector{
 
     public abstract ArrayList<Event> getEventsForVenue(Venue venue);
 
-    public abstract void scheduleEvent(Venue venue, Event event) throws GTFirebaseException;
+    public abstract void scheduleEvent(String venue, Event event, int num_events) throws GTFirebaseException;
 
     public abstract void signUpForEvent(User user, Venue venue, Event event) throws GTFirebaseException;
 }

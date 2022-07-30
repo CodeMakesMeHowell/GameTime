@@ -26,11 +26,13 @@ import java.util.regex.Pattern;
 public class ScheduleEventActivity extends AppCompatActivity{
 
     String venue;
+    int num_events;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_event);
         Intent intent = getIntent();
         venue = intent.getStringExtra("venue_name");
+        num_events = intent.getIntExtra("num_events", 0);
         ArrayList<String> activities = intent.getStringArrayListExtra("activities");
         Spinner spinner = (Spinner) findViewById(R.id.activity_type_spinner);
         ScheduleEventActivity t = this;
@@ -61,7 +63,7 @@ public class ScheduleEventActivity extends AppCompatActivity{
         String date = ((TextView)findViewById(R.id.selected_date)).getText().toString();
         Pattern date_pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
         Pattern time_pattern = Pattern.compile("\\d{2}:\\d{2}");
-        Pattern event_pattern = Pattern.compile("\\w+");
+        Pattern event_pattern = Pattern.compile("\\w+.*");
         String event_name = ((EditText)findViewById(R.id.EventName)).getText().toString();;
         if(!event_pattern.matcher(event_name).matches()){
             badInput("Invalid event name");
@@ -115,9 +117,9 @@ public class ScheduleEventActivity extends AppCompatActivity{
 
         String activity_type = ((Spinner)findViewById(
                 R.id.activity_type_spinner)).getSelectedItem().toString();
-        Event event = new Event(event_name, start_time, end_time, venue, num_players, activity_type, null);
+        Event event = new Event(event_name, start_time, end_time, venue, num_players, activity_type);
         try {
-            FirebaseConfig.getInstance().customerBehavior.scheduleEvent(null, event);
+            FirebaseConfig.getInstance().customerBehavior.scheduleEvent(venue, event, num_events);
             Intent back = new Intent(ScheduleEventActivity.this, SelectVenueActivity.class);
             startActivity(back);
             finish();

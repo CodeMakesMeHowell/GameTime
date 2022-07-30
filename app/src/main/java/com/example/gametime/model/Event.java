@@ -14,7 +14,6 @@ public class Event implements Comparable<Event>{
     String end_time;
     String venue;
     int num_players;
-    ArrayList<User> users;
 
     public Event(){
         name = "";
@@ -34,20 +33,17 @@ public class Event implements Comparable<Event>{
                 ", end_time='" + end_time + '\'' +
                 ", venue='" + venue + '\'' +
                 ", num_players=" + num_players +
-                ", users=" + users +
                 '}';
     }
 
     public Event(String name, String start_time, String end_time, String venue, int num_players,
-                 String activity, ArrayList<User> users){
+                 String activity){
         this.name = name;
         this.start_time = start_time;
         this.end_time = end_time;
         this.venue = venue;
         this.num_players = num_players;
-        this.users =new ArrayList<User>();
         this.activity = activity;
-        this.users = users;
     }
 
     public int getNum_players(){
@@ -69,7 +65,6 @@ public class Event implements Comparable<Event>{
         return venue;
     }
 
-    public ArrayList<User> getUsers(){return users;}
 
     @Override
     public boolean equals(Object other){

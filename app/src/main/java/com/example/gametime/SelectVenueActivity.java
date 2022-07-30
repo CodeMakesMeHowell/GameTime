@@ -38,6 +38,7 @@ public class SelectVenueActivity extends AppCompatActivity implements VenueAdapt
                 ArrayList<Venue> venues = new ArrayList<Venue>();
                 for(DataSnapshot child: dataSnapshot.getChildren()){
                     Venue v = child.getValue(Venue.class);
+                    Log.i("venues select", v.getName());
                     venues.add(v);
                 }
                 RecyclerView recyclerView = findViewById(R.id.venue_recycler);
@@ -62,6 +63,10 @@ public class SelectVenueActivity extends AppCompatActivity implements VenueAdapt
         Intent i = new Intent(SelectVenueActivity.this, ScheduleEventActivity.class);
         i.putExtra("venue_name", adapter.getItem(position).getName());
         i.putExtra("activities", adapter.getItem(position).getActivities());
+        int num_events = 0;
+        if(adapter.getItem(position).getEvents() != null)
+            num_events = adapter.getItem(position).getEvents().toArray().length;
+        i.putExtra("num_events", num_events);
         startActivity(i);
     }
     public void onAddVenueBtnClick(View view) {

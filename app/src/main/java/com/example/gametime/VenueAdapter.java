@@ -1,6 +1,7 @@
 package com.example.gametime;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Venue v = mData.get(position);
+        Log.i("venues", v.getName());
         holder.myTextView.setText(v.getName());
         holder.list.setText(String.join(", ", v.getActivities()));
     }
