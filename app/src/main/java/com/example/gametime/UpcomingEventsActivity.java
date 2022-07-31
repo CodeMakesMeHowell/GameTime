@@ -41,17 +41,18 @@ public class UpcomingEventsActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.upcomingevents);
         list = new ArrayList<>();
-        database = FirebaseDatabase.getInstance().getReference(FirebaseDBPaths.EVENTS.getPath());
+
 
         setOnClickListener();
         EventAdapter adapter = new EventAdapter(this, list, listener);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        database = FirebaseDatabase.getInstance().getReference(FirebaseDBPaths.EVENTS.getPath());
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    System.out.println(dataSnapshot.getValue());
                     Event event = dataSnapshot.getValue(Event.class);
                     list.add(event);
                 }

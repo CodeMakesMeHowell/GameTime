@@ -89,4 +89,21 @@
         android:backgroundTint="#8A918F"
         android:text="View upcoming events" />
 
+    <Button
+        android:id="@+id/joinedEventsButton"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/selectionTxt"
+        android:layout_alignTop="@+id/venueButton"
+        android:layout_alignBottom="@+id/venueButton"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="-46dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="143dp"
+        android:layout_marginBottom="-156dp"
+        android:layout_toEndOf="@+id/venueButton"
+        android:backgroundTint="#8A918F"
+        android:text="Joined events button" />
+
 </RelativeLayout>

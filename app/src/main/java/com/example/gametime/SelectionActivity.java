@@ -20,6 +20,7 @@ public class SelectionActivity extends AppCompatActivity {
 
         Button venueBtn = findViewById(R.id.venueButton);
         Button upcomingBtn = findViewById(R.id.upcomingEventsButton);
+        Button joinedBtn = findViewById(R.id.joinedEventsButton);
 
         venueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +34,14 @@ public class SelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SelectionActivity.this, UpcomingEventsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        joinedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SelectionActivity.this, JoinedEventsActivity.class);
                 startActivity(intent);
             }
         });

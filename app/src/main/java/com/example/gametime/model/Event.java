@@ -2,11 +2,18 @@ package com.example.gametime.model;
 
 import android.os.Build;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
+import com.example.gametime.firebase.FirebaseDBPaths;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 import java.util.ArrayList;
@@ -18,6 +25,7 @@ public class Event implements Comparable<Event>{
     String end_time;
     String venue;
     int num_players;
+    ArrayList<Event> EventList;
 
     public Event(){
         name = "";
@@ -68,7 +76,6 @@ public class Event implements Comparable<Event>{
     public String getVenue(){
         return venue;
     }
-
 
     @Override
     public boolean equals(Object other){
