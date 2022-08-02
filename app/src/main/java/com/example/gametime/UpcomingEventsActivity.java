@@ -52,7 +52,6 @@ public class UpcomingEventsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    System.out.println(dataSnapshot.getValue());
                     Event event = dataSnapshot.getValue(Event.class);
                     list.add(event);
                 }

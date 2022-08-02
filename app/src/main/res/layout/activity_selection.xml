@@ -104,6 +104,6 @@
         android:layout_marginBottom="-156dp"
         android:layout_toEndOf="@+id/venueButton"
         android:backgroundTint="#8A918F"
-        android:text="Joined events button" />
+        android:text="View joined events" />
 
 </RelativeLayout>

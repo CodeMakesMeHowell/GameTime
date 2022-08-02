@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.gametime.firebase.FirebaseDBPaths;
 import com.example.gametime.model.Event;
@@ -43,27 +44,29 @@ public class JoinedEventsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        joinedQuery = FirebaseDatabase.getInstance().getReference(FirebaseDBPaths.EVENTS.getPath());
-        for(String joinedevent : User.currentUser.getEvents()){
-            joinedQuery.orderByChild("name").equalTo(joinedevent).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                        Event event = dataSnapshot.getValue(Event.class);
-                        list.add(event);
+        if (User.currentUser.getEvents().get(0).equals("NO EVENTS")){
+            Toast.makeText(JoinedEventsActivity.this, "You currently have no events!", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            joinedQuery = FirebaseDatabase.getInstance().getReference(FirebaseDBPaths.EVENTS.getPath());
+            for(String joinedevent : User.currentUser.getEvents()){
+                joinedQuery.orderByKey().equalTo(joinedevent).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                            Event event = dataSnapshot.getValue(Event.class);
+                            list.add(event);
+                        }
+                        adapter.notifyDataSetChanged();
                     }
 
-                    adapter.notifyDataSetChanged();
-                }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
 
-                }
-            });
-
+            }
         }
     }
-
-
 }
