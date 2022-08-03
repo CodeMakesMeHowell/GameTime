@@ -1,0 +1,54 @@
+Name: John
+
+What have you done since yesterday?
+	- added input validation for event scheduling
+
+What are you planning on doing today?
+	- check for duplicates in database before scheduling event
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Anna
+
+What have you done since yesterday?
+	- Combined Customer and Admin data structures under User
+
+What are you planning on doing today?
+	- implementing managing venues system
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Nathan
+
+What have you done since yesterday?
+	- completed venue creation activity
+
+What are you planning on doing today?
+	- testing for bugs
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Arwin
+
+What have you done since yesterday?
+	- Created joined events activity
+
+What are you planning on doing today?
+	- Create a functioning register button for users
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Steven (not present)
+
+What have you done since yesterday?
+	- 
+
+What are you planning on doing today?
+	- 
+
+Any impediments or stumbling blocks?
+	- 
