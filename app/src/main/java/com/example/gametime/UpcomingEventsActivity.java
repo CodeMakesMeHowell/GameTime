@@ -72,11 +72,7 @@ public class UpcomingEventsActivity extends AppCompatActivity {
             public void onClick(View v, int position) {
                 Intent intent = new Intent(getApplicationContext(), EventActivity.class);
                 Event event = list.get(position);
-                intent.putExtra("name", event.getName());
-                intent.putExtra("start_time", event.getStart_time());
-                intent.putExtra("end_time", event.getEnd_time());
-                intent.putExtra("num_players", Integer.toString(event.getNum_players()));
-                intent.putExtra("venue", event.getVenue());
+                intent.putExtra("event", event);
                 startActivity(intent);
             }
         };

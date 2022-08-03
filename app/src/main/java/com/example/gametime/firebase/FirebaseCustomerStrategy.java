@@ -2,10 +2,12 @@ package com.example.gametime.firebase;
 
 import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
+import com.example.gametime.EventActivity;
 import com.example.gametime.model.Event;
 import com.example.gametime.model.User;
 import com.example.gametime.model.Venue;

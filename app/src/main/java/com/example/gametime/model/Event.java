@@ -1,6 +1,8 @@
 package com.example.gametime.model;
 
 import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -18,7 +20,7 @@ import java.util.Date;
 
 import java.util.ArrayList;
 
-public class Event implements Comparable<Event>{
+public class Event implements Comparable<Event>, Parcelable {
     String name;
     String activity;
     String start_time;
@@ -35,6 +37,28 @@ public class Event implements Comparable<Event>{
         num_players = -1;
         activity = "";
     }
+
+    protected Event(Parcel in) {
+        name = in.readString();
+        activity = in.readString();
+        start_time = in.readString();
+        end_time = in.readString();
+        venue = in.readString();
+        num_players = in.readInt();
+        EventList = in.createTypedArrayList(Event.CREATOR);
+    }
+
+    public static final Creator<Event> CREATOR = new Creator<Event>() {
+        @Override
+        public Event createFromParcel(Parcel in) {
+            return new Event(in);
+        }
+
+        @Override
+        public Event[] newArray(int size) {
+            return new Event[size];
+        }
+    };
 
     @Override
     public String toString() {
@@ -92,5 +116,21 @@ public class Event implements Comparable<Event>{
 
     public String toUIDString() {
         return String.format("%s_%s_%s_%s", venue, name, start_time.toString(), end_time.toString());
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(activity);
+        parcel.writeString(start_time);
+        parcel.writeString(end_time);
+        parcel.writeString(venue);
+        parcel.writeInt(num_players);
+        parcel.writeTypedList(EventList);
     }
 }

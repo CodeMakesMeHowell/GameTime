@@ -34,6 +34,7 @@ public class JoinedEventsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joined_events);
 
@@ -44,7 +45,7 @@ public class JoinedEventsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        if (User.currentUser.getEvents().get(0).equals("NO EVENTS")){
+        if (User.currentUser.getEvents().contains("NO EVENTS")){
             Toast.makeText(JoinedEventsActivity.this, "You currently have no events!", Toast.LENGTH_SHORT).show();
         }
         else{
