@@ -1,0 +1,54 @@
+Name: John 
+
+What have you done since yesterday?
+	- added check for duplicate event in event scheduling
+
+What are you planning on doing today?
+  - sign up user on schedule
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Anna
+
+What have you done since yesterday?
+	- tested all activities and recorded any needed adjustments
+
+What are you planning on doing today?
+	- Adjust layouts for better user 
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Nathan
+
+What have you done since yesterday?
+	- completed venue creation activity
+
+What are you planning on doing today?
+	- testing for bugs
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Arwin
+
+What have you done since yesterday?
+	- Finished the register button
+
+What are you planning on doing today?
+	- Making the button read username ID instead of name
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Steven (absent)
+
+What have you done since yesterday?
+	- 
+
+What are you planning on doing today?
+	- 
+
+Any impediments or stumbling blocks?
+	- 
