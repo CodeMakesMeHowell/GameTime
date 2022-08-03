@@ -49,10 +49,11 @@ public class EventActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if (User.currentUser.getEvents().contains("NO EVENTS")){
-                                dataSnapshot.child(User.currentUser.getName()).child("events").child("0").getRef().setValue(event.toUIDString());
+                                dataSnapshot.child(User.currentUser.getUsername()).child("events").child("0").getRef().setValue(event.toUIDString());
+                                User.currentUser.getEvents().remove("NO EVENTS");
                             }
                             else{
-                                dataSnapshot.child(User.currentUser.getName()).child("events").child(Integer.toString(User.currentUser.getEvents().size())).getRef().setValue(event.toUIDString());
+                                dataSnapshot.child(User.currentUser.getUsername()).child("events").child(Integer.toString(User.currentUser.getEvents().size())).getRef().setValue(event.toUIDString());
                             }
                             //Update events of the current user for the current session
                             User.currentUser.getEvents().add(event.toUIDString());
