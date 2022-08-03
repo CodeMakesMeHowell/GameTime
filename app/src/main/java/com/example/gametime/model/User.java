@@ -32,6 +32,10 @@ public class User {
         admin = true;
     }
 
+    public void addEvent(String event){
+        events.add(event);
+    }
+
     public User(boolean admin, String name, String username, String password, ArrayList<String> events) {
         this.admin = admin;
         this.name = name;
@@ -68,6 +72,10 @@ public class User {
 
     public static User userFromSnapshot(DataSnapshot userSnapshot) {
         return userSnapshot.getValue(User.class);
+    }
+
+    public void setUsername(String usrname){
+        this.username = usrname;
     }
 
     @Override

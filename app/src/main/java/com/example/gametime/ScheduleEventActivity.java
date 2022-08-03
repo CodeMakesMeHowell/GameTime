@@ -17,7 +17,6 @@ import androidx.fragment.app.DialogFragment;
 import com.example.gametime.firebase.FirebaseConfig;
 import com.example.gametime.firebase.GTFirebaseException;
 import com.example.gametime.model.Event;
-import com.example.gametime.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -49,7 +48,7 @@ public class ScheduleEventActivity extends AppCompatActivity{
         String eventName = ((EditText) findViewById(R.id.EventName)).getText().toString();
     }
 
-    public void badInput(String msg){
+    public void toastMessage(String msg){
         Toast.makeText(ScheduleEventActivity.this, msg, Toast.LENGTH_SHORT).show();
     }
 
@@ -72,14 +71,14 @@ public class ScheduleEventActivity extends AppCompatActivity{
         Pattern event_pattern = Pattern.compile("\\w+.*");
         String event_name = ((EditText)findViewById(R.id.EventName)).getText().toString();;
         if(!event_pattern.matcher(event_name).matches()){
-            badInput("Invalid event name");
+            toastMessage("Invalid event name");
             clearErrors();
             ((EditText)findViewById(R.id.EventName)).setError("Invalid name");
             return;
         }
 
         if(!date_pattern.matcher(date).matches()){
-            badInput("Please enter event date");
+            toastMessage("Please enter event date");
             clearErrors();
             ((TextView)findViewById(R.id.selected_date)).setError("Enter date");
             return;
@@ -87,7 +86,7 @@ public class ScheduleEventActivity extends AppCompatActivity{
 
         String start_time = ((TextView)findViewById(R.id.start_time)).getText().toString();
         if(!time_pattern.matcher(start_time).matches()){
-            badInput("Please enter event start time");
+            toastMessage("Please enter event start time");
             clearErrors();
             ((TextView)findViewById(R.id.start_time)).setError("Enter time");
             return;
@@ -95,12 +94,12 @@ public class ScheduleEventActivity extends AppCompatActivity{
         start_time = date + "-" + start_time;
         if(start_time.compareTo(formatter.format(curr_date)) < 0){
             clearErrors();
-            badInput("Event start time cannot be in the past");
+            toastMessage("Event start time cannot be in the past");
             return;
         }
         String end_time = ((TextView)findViewById(R.id.end_time)).getText().toString();
         if(!time_pattern.matcher(end_time).matches()){
-            badInput("Please enter event end time");
+            toastMessage("Please enter event end time");
             clearErrors();
             ((TextView)findViewById(R.id.end_time)).setError("Enter time");
             return;
@@ -108,13 +107,13 @@ public class ScheduleEventActivity extends AppCompatActivity{
         end_time = date + "-" +  end_time;
         if(end_time.compareTo(start_time)< 0){
             clearErrors();
-            badInput("End time cannot be before start time");
+            toastMessage("End time cannot be before start time");
             return;
         }
         String num_players_input = ((EditText)findViewById(R.id.num_players_input)).getText().toString();
 
         if(!num_players_input.matches("\\d+")){
-            badInput("Please enter the number of players");
+            toastMessage("Please enter the number of players");
             clearErrors();
             ((EditText)findViewById(R.id.num_players_input)).setError("Enter number of players");
             return;
@@ -130,12 +129,13 @@ public class ScheduleEventActivity extends AppCompatActivity{
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild(event.toUIDString())){
                     if(!done)
-                        badInput("This event already exists");
+                        toastMessage("This event already exists");
                 }
                 else{
                     try {
                         done = true;
                         FirebaseConfig.getInstance().customerBehavior.scheduleEvent(venue, event, num_events);
+                        toastMessage("Event successfully created");
                         Intent back = new Intent(ScheduleEventActivity.this, SelectVenueActivity.class);
                         startActivity(back);
                         finish();

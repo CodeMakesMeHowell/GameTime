@@ -29,5 +29,5 @@ public abstract class FirebaseCustomerBehavior extends FirebaseConnector{
 
     public abstract void listenForEvents(ValueEventListener v);
 
-    public abstract void signUpForEvent(User user, Venue venue, Event event) throws GTFirebaseException;
+    public abstract void signUp(Event event);
 }

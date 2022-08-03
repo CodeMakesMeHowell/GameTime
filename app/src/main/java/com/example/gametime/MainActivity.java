@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                                 if(getPassword.equals(passwordTxt)){
                                     DataSnapshot userSnap = dataSnapshot.child(usernameTxt);
                                     User.currentUser = User.userFromSnapshot(userSnap);
+                                    User.currentUser.setUsername(usernameTxt);
                                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(MainActivity.this, SelectionActivity.class);
                                     startActivity(i);

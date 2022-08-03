@@ -72,6 +72,10 @@ public class Event implements Comparable<Event>, Parcelable {
                 '}';
     }
 
+    public void register(){
+        if (num_players > 0) num_players--;
+    }
+
     public Event(String name, String start_time, String end_time, String venue, int num_players,
                  String activity){
         this.name = name;
