@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -17,6 +18,9 @@ import com.example.gametime.firebase.FirebaseConfig;
 import com.example.gametime.firebase.GTFirebaseException;
 import com.example.gametime.model.Event;
 import com.example.gametime.model.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,12 +31,14 @@ public class ScheduleEventActivity extends AppCompatActivity{
 
     String venue;
     int num_events;
+    boolean done;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_event);
         Intent intent = getIntent();
         venue = intent.getStringExtra("venue_name");
         num_events = intent.getIntExtra("num_events", 0);
+        done = false;
         ArrayList<String> activities = intent.getStringArrayListExtra("activities");
         Spinner spinner = (Spinner) findViewById(R.id.activity_type_spinner);
         ScheduleEventActivity t = this;
@@ -118,14 +124,32 @@ public class ScheduleEventActivity extends AppCompatActivity{
         String activity_type = ((Spinner)findViewById(
                 R.id.activity_type_spinner)).getSelectedItem().toString();
         Event event = new Event(event_name, start_time, end_time, venue, num_players, activity_type);
-        try {
-            FirebaseConfig.getInstance().customerBehavior.scheduleEvent(venue, event, num_events);
-            Intent back = new Intent(ScheduleEventActivity.this, SelectVenueActivity.class);
-            startActivity(back);
-            finish();
-        } catch (GTFirebaseException e) {
-            e.printStackTrace();
-        }
+
+        FirebaseConfig.getInstance().customerBehavior.listenForEvents(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChild(event.toUIDString())){
+                    if(!done)
+                        badInput("This event already exists");
+                }
+                else{
+                    try {
+                        done = true;
+                        FirebaseConfig.getInstance().customerBehavior.scheduleEvent(venue, event, num_events);
+                        Intent back = new Intent(ScheduleEventActivity.this, SelectVenueActivity.class);
+                        startActivity(back);
+                        finish();
+                    } catch (GTFirebaseException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void displayTimePicker(View view){

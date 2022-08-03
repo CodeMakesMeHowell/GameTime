@@ -53,9 +53,13 @@ public class FirebaseCustomerStrategy extends FirebaseCustomerBehavior {
         ref.child(venue_name).child("events").child(Integer.toString(num_events)).setValue(event);
     }
 
-    private void getEventByID(String id){
-
+    @Override
+    public void listenForEvents(ValueEventListener v){
+        DatabaseReference ref = db.getReference(FirebaseDBPaths.EVENTS.getPath());
+        Log.i("locate event","Fdsafd");
+        ref.addValueEventListener(v);
     }
+
 
     @Override
     public void signUpForEvent(User user, Venue venue, Event event) throws GTFirebaseException {

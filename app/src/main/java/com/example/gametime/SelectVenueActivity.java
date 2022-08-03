@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,6 +32,8 @@ public class SelectVenueActivity extends AppCompatActivity implements VenueAdapt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venue_list);
+
+
         SelectVenueActivity t = this;
         ValueEventListener val = new ValueEventListener() {
             @Override
@@ -42,10 +45,14 @@ public class SelectVenueActivity extends AppCompatActivity implements VenueAdapt
                     venues.add(v);
                 }
                 RecyclerView recyclerView = findViewById(R.id.venue_recycler);
-                recyclerView.setLayoutManager(new LinearLayoutManager(t));
+                LinearLayoutManager layoutManager = new LinearLayoutManager(t);
+                recyclerView.setLayoutManager(layoutManager);
                 adapter = new VenueAdapter(t, venues);
                 adapter.setClickListener(t);
                 recyclerView.setAdapter(adapter);
+                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                        layoutManager.getOrientation());
+                recyclerView.addItemDecoration(dividerItemDecoration);
             }
 
             @Override
