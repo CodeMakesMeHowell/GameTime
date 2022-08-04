@@ -1,0 +1,43 @@
+Name: John
+
+What have you done since yesterday?
+	- made it so that users are automatically registered in the events they create
+
+What are you planning on doing today?
+	- Prepare for tomorrow's project meeting
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Nathan
+
+What have you done since yesterday?
+	- participated in group discussion
+
+What are you planning on doing today?
+	- Prepare for tomorrow's project meeting
+
+Any impediments or stumbling blocks?
+	- no
+ 
+Name: Arwin
+
+What have you done since yesterday?
+	- fixed event activity to read username ID instead of the user's name
+
+What are you planning on doing today?
+	- Prepare for tomorrow's project meeting
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Anna
+
+What have you done since yesterday?
+	- added logout button and implemented back functionality on all pages
+
+What are you planning on doing today?
+	- Test all user log in 
+
+Any impediments or stumbling blocks?
+	- no
