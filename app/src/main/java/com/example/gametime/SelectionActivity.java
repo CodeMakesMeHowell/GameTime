@@ -22,6 +22,8 @@ public class SelectionActivity extends AppCompatActivity {
         Button upcomingBtn = findViewById(R.id.upcomingEventsButton);
         Button joinedBtn = findViewById(R.id.joinedEventsButton);
 
+        TextView logOut = (TextView) findViewById(R.id.LogOutTxt);
+
         venueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,5 +47,22 @@ public class SelectionActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentSignIn = new Intent(SelectionActivity.this, MainActivity.class);
+                startActivity(intentSignIn);
+                finish();
+            }
+        });
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intentSignIn = new Intent(SelectionActivity.this, MainActivity.class);
+        startActivity(intentSignIn);
+        finish();
+    }
+
 }

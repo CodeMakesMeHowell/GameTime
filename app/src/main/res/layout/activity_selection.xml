@@ -97,13 +97,28 @@
         android:layout_alignTop="@+id/venueButton"
         android:layout_alignBottom="@+id/venueButton"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="-46dp"
-        android:layout_marginTop="156dp"
-        android:layout_marginEnd="143dp"
-        android:layout_marginBottom="-156dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="-47dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginBottom="-136dp"
         android:layout_toEndOf="@+id/venueButton"
         android:backgroundTint="#8A918F"
         android:text="View joined events" />
+
+    <TextView
+        android:id="@+id/LogOutTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="Log Out"
+        android:textColor="#E63852"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

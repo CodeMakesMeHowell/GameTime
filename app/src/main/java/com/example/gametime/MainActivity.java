@@ -88,7 +88,12 @@ public class MainActivity extends AppCompatActivity {
                                     DataSnapshot userSnap = dataSnapshot.child(usernameTxt);
                                     User.currentUser = User.userFromSnapshot(userSnap);
                                     User.currentUser.setUsername(usernameTxt);
-                                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                    if(User.currentUser.isAdmin())
+                                    {
+                                        Toast.makeText(MainActivity.this, "Logged in as Admin", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                    }
                                     Intent i = new Intent(MainActivity.this, SelectionActivity.class);
                                     startActivity(i);
                                     finish();
@@ -107,5 +112,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        moveTaskToBack(true);
     }
 }
