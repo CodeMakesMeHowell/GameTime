@@ -25,31 +25,39 @@
         android:id="@+id/activitiesRecyclerView"
         android:layout_width="409dp"
         android:layout_height="300dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/activityNameInput"
+        android:layout_marginTop="44dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/activityNameInput" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
         android:text="@string/create_venue_act_header"
         android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/activitiesRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/activityNameInput" />
+
+    <Button
+        android:id="@+id/addActivityButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/add_activity_btn_txt"
+        app:layout_constraintBottom_toBottomOf="@+id/activityNameInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toEndOf="@+id/activityNameInput" />
 
     <EditText
         android:id="@+id/activityNameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="336dp"
+        android:layout_marginTop="48dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -57,19 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/addActivityButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/add_activity_btn_txt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/activityNameInput"
-        app:layout_constraintTop_toBottomOf="@+id/activitiesRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/venueNameInput" />
 
     <Button
         android:id="@+id/createVenueBtn"
@@ -80,7 +76,7 @@
         android:text="@string/create_venue_btn_txt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addActivityButton"
+        app:layout_constraintTop_toBottomOf="@+id/activitiesRecyclerView"
         app:layout_constraintVertical_bias="0.85" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
