@@ -38,7 +38,7 @@ public class DatePickerFragment extends DialogFragment
     public String toString(){
         String month_string = Integer.toString(event_month + 1);
         String day_string = Integer.toString(event_day);
-        if(event_month < 10) month_string = "0" + month_string;
+        if(event_month < 9) month_string = "0" + month_string;
         if(event_day < 10 ) day_string = "0" + day_string;
         return event_year + "-" + month_string + "-" + day_string;
     }

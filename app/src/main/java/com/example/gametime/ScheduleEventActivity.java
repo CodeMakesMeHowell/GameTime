@@ -17,6 +17,7 @@ import androidx.fragment.app.DialogFragment;
 import com.example.gametime.firebase.FirebaseConfig;
 import com.example.gametime.firebase.GTFirebaseException;
 import com.example.gametime.model.Event;
+import com.example.gametime.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -124,6 +125,7 @@ public class ScheduleEventActivity extends AppCompatActivity{
                 R.id.activity_type_spinner)).getSelectedItem().toString();
         Event event = new Event(event_name, start_time, end_time, venue, num_players, activity_type);
 
+
         FirebaseConfig.getInstance().customerBehavior.listenForEvents(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -136,7 +138,14 @@ public class ScheduleEventActivity extends AppCompatActivity{
                         done = true;
                         FirebaseConfig.getInstance().customerBehavior.scheduleEvent(venue, event, num_events);
                         toastMessage("Event successfully created");
-                        Intent back = new Intent(ScheduleEventActivity.this, SelectVenueActivity.class);
+
+                        Intent back = new Intent(ScheduleEventActivity.this,
+                                User.currentUser.isAdmin() ? UpcomingEventsActivity.class : SelectVenueActivity.class);
+                        if(User.currentUser.isAdmin()){
+                            back.putExtra("venue_name", getIntent().getStringExtra("venue_name"));
+                            back.putExtra("num_events", getIntent().getIntExtra("num_events", 0));
+                            back.putExtra("activities", getIntent().getStringArrayListExtra("activities"));
+                        }
                         startActivity(back);
                         finish();
                     } catch (GTFirebaseException e) {

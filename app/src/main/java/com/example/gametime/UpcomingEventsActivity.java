@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.gametime.firebase.FirebaseDBPaths;
 import com.example.gametime.model.Event;
@@ -31,14 +32,18 @@ public class UpcomingEventsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(UpcomingEventsActivity.this, SelectionActivity.class));
+        if(getIntent().getStringExtra("venue_name") != null)
+            startActivity(new Intent(UpcomingEventsActivity.this, SelectVenueActivity.class));
+        else
+            startActivity(new Intent(UpcomingEventsActivity.this, SelectionActivity.class));
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upcoming_events);
-
+        ((Button)findViewById(R.id.admin_schedule_event_button)).setVisibility(
+                getIntent().getStringExtra("venue_name") != null ? View.VISIBLE : View.GONE);
         recyclerView = findViewById(R.id.upcomingevents);
         list = new ArrayList<>();
 
@@ -53,7 +58,9 @@ public class UpcomingEventsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Event event = dataSnapshot.getValue(Event.class);
-                    list.add(event);
+                    if(getIntent().getStringExtra("venue_name") == null ||
+                            event.getVenue().equals(getIntent().getStringExtra("venue_name")))
+                        list.add(event);
                 }
                 Collections.sort(list);
                 adapter.notifyDataSetChanged();
@@ -66,10 +73,19 @@ public class UpcomingEventsActivity extends AppCompatActivity {
         });
     }
 
+    public void onAdminScheduleEvent(View view){
+        Intent i = new Intent(UpcomingEventsActivity.this, ScheduleEventActivity.class);
+        i.putExtra("venue_name", getIntent().getStringExtra("venue_name"));
+        i.putExtra("num_events", getIntent().getIntExtra("num_events", 0));
+        i.putExtra("activities", getIntent().getStringArrayListExtra("activities"));
+        startActivity(i);
+
+    }
     private void setOnClickListener() {
         listener = new EventAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View v, int position) {
+                if(getIntent().getStringExtra("venue_name") != null) return;
                 Intent intent = new Intent(getApplicationContext(), EventActivity.class);
                 Event event = list.get(position);
                 intent.putExtra("event", event);

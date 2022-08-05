@@ -29,6 +29,12 @@ import java.util.ArrayList;
 public class SelectVenueActivity extends AppCompatActivity implements VenueAdapter.ItemClickListener {
     VenueAdapter adapter;
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(SelectVenueActivity.this, SelectionActivity.class));
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venue_list);
@@ -41,7 +47,6 @@ public class SelectVenueActivity extends AppCompatActivity implements VenueAdapt
                 ArrayList<Venue> venues = new ArrayList<Venue>();
                 for(DataSnapshot child: dataSnapshot.getChildren()){
                     Venue v = child.getValue(Venue.class);
-                    Log.i("venues select", v.getName());
                     venues.add(v);
                 }
                 RecyclerView recyclerView = findViewById(R.id.venue_recycler);
@@ -67,14 +72,19 @@ public class SelectVenueActivity extends AppCompatActivity implements VenueAdapt
     }
     @Override
     public void onItemClick(View view, int position) {
-        Intent i = new Intent(SelectVenueActivity.this, ScheduleEventActivity.class);
-        i.putExtra("venue_name", adapter.getItem(position).getName());
-        i.putExtra("activities", adapter.getItem(position).getActivities());
         int num_events = 0;
         if(adapter.getItem(position).getEvents() != null)
             num_events = adapter.getItem(position).getEvents().toArray().length;
-        i.putExtra("num_events", num_events);
-        startActivity(i);
+        Intent intent;
+        if(!User.currentUser.isAdmin())
+            intent = new Intent(SelectVenueActivity.this, ScheduleEventActivity.class);
+        else
+            intent = new Intent(SelectVenueActivity.this, UpcomingEventsActivity.class);
+        intent.putExtra("venue_name", adapter.getItem(position).getName());
+        intent.putExtra("num_events", num_events);
+        intent.putExtra("activities", adapter.getItem(position).getActivities());
+        startActivity(intent);
+
     }
     public void onAddVenueBtnClick(View view) {
         Intent intent = new Intent(this, CreateVenueActivity.class);
