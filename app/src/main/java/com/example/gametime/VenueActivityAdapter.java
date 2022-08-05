@@ -15,10 +15,17 @@ import java.util.ArrayList;
 public class VenueActivityAdapter extends RecyclerView.Adapter<VenueActivityAdapter.ActivityViewHolder> {
     public ArrayList<String> activities;
     private Context context;
+    private boolean allowDeletion = true;
 
     public VenueActivityAdapter(Context context, ArrayList<String> activities) {
         this.context = context;
         this.activities = activities;
+    }
+
+    public VenueActivityAdapter(Context context, ArrayList<String> activities, boolean allowDeletion) {
+        this.context = context;
+        this.activities = activities;
+        this.allowDeletion = allowDeletion;
     }
 
     public class ActivityViewHolder extends RecyclerView.ViewHolder {
@@ -30,13 +37,17 @@ public class VenueActivityAdapter extends RecyclerView.Adapter<VenueActivityAdap
             nameTxt = view.findViewById(R.id.holderActivityNameTxt);
             button = view.findViewById(R.id.activityDeleteBtn);
 
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    activities.remove(nameTxt.getText());
-                    notifyDataSetChanged();
-                }
-            });
+            if(!allowDeletion) {
+                button.setVisibility(View.INVISIBLE);
+            } else {
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        activities.remove(nameTxt.getText());
+                        notifyDataSetChanged();
+                    }
+                });
+            }
         }
     }
 

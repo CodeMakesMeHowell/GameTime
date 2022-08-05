@@ -15,9 +15,9 @@ public abstract class FirebaseAdminBehavior extends FirebaseConnector {
         super(db);
     }
 
-    public abstract void addVenue(Venue venue, GTFirebaseListener listener);
+    public abstract void addVenue(Venue venue, GTFirebaseListener listener, boolean overwrite);
     public abstract void removeVenue(Venue venue, GTFirebaseListener listener);
     public abstract void removeEvent(Venue venue, Event event, GTFirebaseListener listener);
-    public abstract ArrayList<Venue> getVenues(GTFirebaseListener<ArrayList<Venue>> listener);
+    public abstract void getVenue(String venueName, GTFirebaseListener<Venue> listener);
     public abstract ArrayList<Event> getEventsForVenue(Venue venue, GTFirebaseListener<ArrayList<Event>> listener);
 }

@@ -16,7 +16,6 @@ import com.example.gametime.firebase.GTFirebaseListener;
 import com.example.gametime.model.Event;
 import com.example.gametime.model.Venue;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 public class CreateVenueActivity extends AppCompatActivity {
@@ -88,6 +87,6 @@ public class CreateVenueActivity extends AppCompatActivity {
             public void onFailure(String message) {
                 Toast.makeText(CreateVenueActivity.this, message, Toast.LENGTH_SHORT).show();
             }
-        });
+        }, false);
     }
 }

@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import com.example.gametime.firebase.FirebaseDBPaths;
 import com.example.gametime.model.Event;
+import com.example.gametime.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -71,6 +72,10 @@ public class UpcomingEventsActivity extends AppCompatActivity {
 
             }
         });
+
+        if(!User.currentUser.isAdmin()) {
+            findViewById(R.id.admin_edit_venue_btn).setVisibility(View.GONE);
+        }
     }
 
     public void onAdminScheduleEvent(View view){
@@ -81,6 +86,13 @@ public class UpcomingEventsActivity extends AppCompatActivity {
         startActivity(i);
 
     }
+
+    public void onEditVenueBtnPressed(View view) {
+        Intent i = new Intent(UpcomingEventsActivity.this, EditVenueActivity.class);
+        i.putExtra("venue_name", getIntent().getStringExtra("venue_name"));
+        startActivity(i);
+    }
+
     private void setOnClickListener() {
         listener = new EventAdapter.RecyclerViewClickListener() {
             @Override

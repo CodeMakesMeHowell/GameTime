@@ -24,6 +24,7 @@
     <string name="start_time">Select start time</string>
     <string name="addVenueBtnTxt">Add Venue</string>
     <string name="addEventBtn">Add an event</string>
+    <string name="editVenueBtn">Edit Venue</string>
 
     <string name="venueNameInputTxt">Venue Name</string>
     <string name="create_venue_act_header">Activities</string>

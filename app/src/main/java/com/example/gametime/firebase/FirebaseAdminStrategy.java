@@ -3,7 +3,6 @@ package com.example.gametime.firebase;
 import androidx.annotation.NonNull;
 
 import com.example.gametime.model.Event;
-import com.example.gametime.model.User;
 import com.example.gametime.model.Venue;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,7 +22,7 @@ class FirebaseAdminStrategy extends FirebaseAdminBehavior {
     }
 
     @Override
-    public void addVenue(Venue venue, GTFirebaseListener listener) {
+    public void addVenue(Venue venue, GTFirebaseListener listener, boolean overwrite) {
         if(venue == null) {
             listener.onFailure("Failed to get valid venue object (nullReference)");
             return;
@@ -35,7 +34,7 @@ class FirebaseAdminStrategy extends FirebaseAdminBehavior {
         db.getReference(FirebaseDBPaths.VENUES.getPath()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.hasChild(venue.toUIDString())) {
+                if(!overwrite && dataSnapshot.hasChild(venue.toUIDString())) {
                     listener.onFailure("Failed: A venue with the same name already exists!");
                 } else {
                     dataSnapshot.child(venue.toUIDString()).getRef().setValue(venue).addOnCompleteListener((task) -> {
@@ -87,8 +86,19 @@ class FirebaseAdminStrategy extends FirebaseAdminBehavior {
     }
 
     @Override
-    public ArrayList<Venue> getVenues(GTFirebaseListener<ArrayList<Venue>> listener) {
-        return null;
+    public void getVenue(String venueName, GTFirebaseListener<Venue> listener) {
+        db.getReference(FirebaseDBPaths.VENUES.getPath()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listener.onComplete(dataSnapshot.child(venueName).getValue(Venue.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                listener.onFailure("Something went wrong with the database");
+                System.err.println(databaseError.getMessage());
+            }
+        });
     }
 
     @Override
