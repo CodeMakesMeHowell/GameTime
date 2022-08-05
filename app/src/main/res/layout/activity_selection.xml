@@ -70,7 +70,7 @@
         android:layout_marginStart="58dp"
         android:layout_marginTop="352dp"
         android:backgroundTint="#8A918F"
-        android:text="@string/select_a_venue" />
+        android:text="View Venues" />
 
     <Button
         android:id="@+id/upcomingEventsButton"

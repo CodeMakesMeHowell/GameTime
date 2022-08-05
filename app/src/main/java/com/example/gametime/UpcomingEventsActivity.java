@@ -73,7 +73,7 @@ public class UpcomingEventsActivity extends AppCompatActivity {
             }
         });
 
-        if(!User.currentUser.isAdmin()) {
+        if(!User.currentUser.isAdmin() || getIntent().getStringExtra("prev_activity").equals("Selection")) {
             findViewById(R.id.admin_edit_venue_btn).setVisibility(View.GONE);
         }
     }

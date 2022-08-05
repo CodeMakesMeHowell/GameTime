@@ -80,10 +80,11 @@ public class SelectVenueActivity extends AppCompatActivity implements VenueAdapt
             intent = new Intent(SelectVenueActivity.this, ScheduleEventActivity.class);
         else
             intent = new Intent(SelectVenueActivity.this, UpcomingEventsActivity.class);
-        intent.putExtra("venue_name", adapter.getItem(position).getName());
-        intent.putExtra("num_events", num_events);
-        intent.putExtra("activities", adapter.getItem(position).getActivities());
-        startActivity(intent);
+            intent.putExtra("venue_name", adapter.getItem(position).getName());
+            intent.putExtra("num_events", num_events);
+            intent.putExtra("activities", adapter.getItem(position).getActivities());
+            intent.putExtra("prev_activity", "Venues");
+            startActivity(intent);
 
     }
     public void onAddVenueBtnClick(View view) {

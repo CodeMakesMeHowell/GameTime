@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.gametime.model.User;
 
 public class SelectionActivity extends AppCompatActivity {
 
@@ -24,6 +27,11 @@ public class SelectionActivity extends AppCompatActivity {
 
         TextView logOut = (TextView) findViewById(R.id.LogOutTxt);
 
+        if(User.currentUser.isAdmin())
+        {
+           venueBtn.setText("Manage Venues");
+        }
+
         venueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,6 +44,7 @@ public class SelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SelectionActivity.this, UpcomingEventsActivity.class);
+                intent.putExtra("prev_activity", "Selection");
                 startActivity(intent);
             }
         });
@@ -53,6 +62,7 @@ public class SelectionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentSignIn = new Intent(SelectionActivity.this, MainActivity.class);
                 startActivity(intentSignIn);
+                Toast.makeText(SelectionActivity.this, "Successfully Logged Out", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -62,6 +72,7 @@ public class SelectionActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intentSignIn = new Intent(SelectionActivity.this, MainActivity.class);
         startActivity(intentSignIn);
+        Toast.makeText(SelectionActivity.this, "Successfully Logged Out", Toast.LENGTH_SHORT).show();
         finish();
     }
 
