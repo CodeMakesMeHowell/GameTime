@@ -81,16 +81,27 @@
         app:layout_constraintVertical_bias="0.278" />
 
     <TextView
-        android:id="@+id/remaining_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remaining"
+        android:text="Remaining:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.315"
+        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.723" />
+        app:layout_constraintVertical_bias="0.728" />
+
+    <TextView
+        android:id="@+id/remaininginfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.336"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.727" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 package com.example.gametime;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gametime.firebase.FirebaseConfig;
+import com.example.gametime.firebase.FirebaseCustomerStrategy;
 import com.example.gametime.firebase.FirebaseDBPaths;
 import com.example.gametime.model.Event;
 import com.example.gametime.model.User;
@@ -28,6 +30,7 @@ public class EventActivity extends AppCompatActivity {
         TextView startTxt = findViewById(R.id.startinfo);
         TextView endTxt = findViewById(R.id.endinfo);
         TextView venueTxt = findViewById(R.id.venueinfo);
+        TextView remainingTxt = findViewById(R.id.remaininginfo);
 
         Button registerbtn = findViewById(R.id.registerBtn);
         Event event = getIntent().getParcelableExtra("event");
@@ -36,35 +39,45 @@ public class EventActivity extends AppCompatActivity {
         startTxt.setText(event.getStart_time());
         endTxt.setText(event.getEnd_time());
         venueTxt.setText(event.getVenue());
+        remainingTxt.setText(Integer.toString(event.getNum_players()));
 
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (User.currentUser.getEvents().contains(event.toUIDString())){
-                    Toast.makeText(EventActivity.this, "You have already registered for this event!", Toast.LENGTH_SHORT).show();
+                if(event.getNum_players() == 0){
+                    Toast.makeText(EventActivity.this, "This event has reached its max capacity!", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    db.getReference(FirebaseDBPaths.USERS.getPath()).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (User.currentUser.getEvents().contains("NO EVENTS")){
-                                dataSnapshot.child(User.currentUser.getUsername()).child("events").child("0").getRef().setValue(event.toUIDString());
-                                User.currentUser.getEvents().remove("NO EVENTS");
-                            }
-                            else{
-                                dataSnapshot.child(User.currentUser.getUsername()).child("events").child(Integer.toString(User.currentUser.getEvents().size())).getRef().setValue(event.toUIDString());
-                            }
-                            //Update events of the current user for the current session
-                            User.currentUser.getEvents().add(event.toUIDString());
-                        }
+                    if (User.currentUser.getEvents().contains(event.toUIDString())) {
+                        Toast.makeText(EventActivity.this, "You have already registered for this event!", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        FirebaseDatabase db = FirebaseDatabase.getInstance();
+                        db.getReference(FirebaseDBPaths.USERS.getPath()).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if (User.currentUser.getEvents().contains("NO EVENTS")) {
+                                    dataSnapshot.child(User.currentUser.getUsername()).child("events").child("0").getRef().setValue(event.toUIDString());
+                                    User.currentUser.getEvents().remove("NO EVENTS");
+                                } else {
+                                    dataSnapshot.child(User.currentUser.getUsername()).child("events").child(Integer.toString(User.currentUser.getEvents().size())).getRef().setValue(event.toUIDString());
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                                }
+                                event.register();
+                                User.currentUser.addEvent(event.toUIDString());
+                                DatabaseReference ref = db.getReference(FirebaseDBPaths.EVENTS.getPath());
+                                ref.child(event.toUIDString()).setValue(event);
+                                startActivity(new Intent(EventActivity.this, UpcomingEventsActivity.class));
+                                finish();
+                            }
 
-                        }
-                    });
-                    Toast.makeText(EventActivity.this, "Successfully registered!", Toast.LENGTH_SHORT).show();
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                        Toast.makeText(EventActivity.this, "Successfully registered!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

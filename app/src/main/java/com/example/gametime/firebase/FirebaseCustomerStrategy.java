@@ -47,7 +47,6 @@ public class FirebaseCustomerStrategy extends FirebaseCustomerBehavior {
 
     @Override
     public void scheduleEvent(String venue_name, Event event, int num_events) throws GTFirebaseException {
-        //sign up the user when they schedule
         DatabaseReference ref = db.getReference(FirebaseDBPaths.EVENTS.getPath());
         ref.child(event.toUIDString()).setValue(event);
         ref = db.getReference(FirebaseDBPaths.VENUES.getPath());
@@ -60,6 +59,7 @@ public class FirebaseCustomerStrategy extends FirebaseCustomerBehavior {
         DatabaseReference ref = db.getReference(FirebaseDBPaths.EVENTS.getPath());
         ref.addValueEventListener(v);
     }
+
 
     @Override
     public void signUp(Event event){
