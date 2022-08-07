@@ -18,7 +18,8 @@ public class User {
     String name;
     String username;
     String password;
-    ArrayList<String> events;
+    ArrayList<String> events;   //Joined events
+    ArrayList<String> scheduled; //Scheduled events
 
     public static User currentUser = null;
 
@@ -36,13 +37,19 @@ public class User {
         events.add(event);
     }
 
-    public User(boolean admin, String name, String username, String password, ArrayList<String> events) {
+    public void addScheduled(String event){
+        scheduled.add(event);
+    }
+
+    public User(boolean admin, String name, String username, String password, ArrayList<String> events, ArrayList<String> scheduled) {
         this.admin = admin;
         this.name = name;
         this.username = username;
         this.password = password;
         this.events = events;
         events.add("NO EVENTS");
+        this.scheduled = scheduled;
+        scheduled.add("NO EVENTS");
     }
 
     public boolean isAdmin() {
@@ -61,12 +68,17 @@ public class User {
         return events;
     }
 
+    public ArrayList<String> getScheduled() {
+        return scheduled;
+    }
+
     public void addToDb(){
         DatabaseReference ref = FirebaseConfig.getInstance().getDbInstance().getReference();
 
         ref.child(FirebaseDBPaths.USERS.getPath()).child(username).child("name").setValue(this.name);
         ref.child(FirebaseDBPaths.USERS.getPath()).child(username).child("password").setValue(this.password);
         ref.child(FirebaseDBPaths.USERS.getPath()).child(username).child("events").setValue(this.events);
+        ref.child(FirebaseDBPaths.USERS.getPath()).child(username).child("scheduled").setValue(this.scheduled);
         ref.child(FirebaseDBPaths.USERS.getPath()).child(username).child("admin").setValue(this.admin);
     }
 

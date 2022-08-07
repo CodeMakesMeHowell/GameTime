@@ -98,13 +98,24 @@
         android:layout_alignBottom="@+id/venueButton"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="-47dp"
-        android:layout_marginTop="136dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginBottom="-136dp"
+        android:layout_marginStart="-127dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="224dp"
+        android:layout_marginBottom="-130dp"
         android:layout_toEndOf="@+id/venueButton"
         android:backgroundTint="#8A918F"
         android:text="View joined events" />
+
+    <Button
+        android:id="@+id/scheduledEventsButton"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:layout_alignBottom="@+id/venueButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="-129dp"
+        android:backgroundTint="#8A918F"
+        android:text="View Scheduled events" />
 
     <TextView
         android:id="@+id/LogOutTxt"

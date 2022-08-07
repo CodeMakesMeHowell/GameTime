@@ -52,6 +52,17 @@ public class FirebaseCustomerStrategy extends FirebaseCustomerBehavior {
         ref = db.getReference(FirebaseDBPaths.VENUES.getPath());
         ref.child(venue_name).child("events").child(Integer.toString(num_events)).setValue(event);
 
+        User curr_user = User.currentUser;
+        ref = db.getReference(FirebaseDBPaths.USERS.getPath());
+        if (curr_user.getScheduled().contains("NO EVENTS")){
+            ref.child(curr_user.getUsername()).child("scheduled").child("0").setValue(event.toUIDString());
+            curr_user.getScheduled().remove("NO EVENTS");
+        }
+        else {
+            int num = curr_user.getEvents().size();
+            ref.child(curr_user.getUsername()).child("scheduled").child(String.valueOf(num)).setValue(event.toUIDString());
+        }
+        curr_user.addScheduled(event.toUIDString());
     }
 
     @Override

@@ -31,6 +31,8 @@
     <string name="create_venue_btn_txt">Create Venue</string>
     <string name="delete_prompt">Delete</string>
     <string name="activity_name_input_txt">Activity Name</string>
+    <string name="your_joined_events">Your Joined Events:</string>
+    <string name="your_scheduled_events">Your Scheduled Events</string>
 
     <string-array name="UserTypes">
         <item>Customer</item>

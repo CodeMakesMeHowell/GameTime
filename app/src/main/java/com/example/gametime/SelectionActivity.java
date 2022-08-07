@@ -24,6 +24,7 @@ public class SelectionActivity extends AppCompatActivity {
         Button venueBtn = findViewById(R.id.venueButton);
         Button upcomingBtn = findViewById(R.id.upcomingEventsButton);
         Button joinedBtn = findViewById(R.id.joinedEventsButton);
+        Button scheduledBtn = findViewById(R.id.scheduledEventsButton);
 
         TextView logOut = (TextView) findViewById(R.id.LogOutTxt);
 
@@ -53,6 +54,14 @@ public class SelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SelectionActivity.this, JoinedEventsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        scheduledBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SelectionActivity.this, ScheduledEventsActivity.class);
                 startActivity(intent);
             }
         });
