@@ -49,14 +49,6 @@ public class UpcomingEventsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.upcomingevents);
         list = new ArrayList<>();
 
-       if(getIntent().getStringExtra("prev_activity").equals("Venues")) {
-            TextView filtered_EV = (TextView) findViewById(R.id.EV_Description);
-            TextView prompt = (TextView) findViewById(R.id.EV_upcomingPrompt);
-
-            filtered_EV.setText("Events at " + getIntent().getStringExtra("venue_name"));
-            prompt.setVisibility(View.GONE);
-        }
-
         setOnClickListener();
         EventAdapter adapter = new EventAdapter(this, list, listener);
         recyclerView.setAdapter(adapter);
@@ -81,9 +73,17 @@ public class UpcomingEventsActivity extends AppCompatActivity {
             }
         });
 
-        if(!(User.currentUser.isAdmin()) || getIntent().getStringExtra("prev_activity").equals("Selection")) {
+        if(User.currentUser.isAdmin())
+        {
+            ((TextView)findViewById(R.id.EV_Description)).setText("EVENTS");
+            findViewById(R.id.EV_upcomingPrompt).setVisibility(View.GONE);
+        }
+
+        if(!User.currentUser.isAdmin() || getIntent().getStringExtra("prev_activity").equals("Selection")) {
             findViewById(R.id.admin_edit_venue_btn).setVisibility(View.GONE);
         }
+
+
     }
 
     public void onAdminScheduleEvent(View view){
