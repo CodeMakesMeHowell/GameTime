@@ -1,6 +1,7 @@
 package com.example.gametime;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +41,10 @@ public class EventActivity extends AppCompatActivity {
         endTxt.setText(event.getEnd_time());
         venueTxt.setText(event.getVenue());
         remainingTxt.setText(Integer.toString(event.getNum_players()));
+
+        if(event.getNum_players() == 0){
+            registerbtn.setBackgroundColor(Color.GRAY);
+        }
 
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override

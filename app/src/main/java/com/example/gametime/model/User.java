@@ -25,11 +25,11 @@ public class User {
     public User(){
     }
 
-    public User(String name, String username, String password, boolean admin){
+    public User(String name, String username, String password){
         this.name = name;
         this.username = username;
         this.password = password;
-        admin = true;
+        this.admin = true;
     }
 
     public void addEvent(String event){

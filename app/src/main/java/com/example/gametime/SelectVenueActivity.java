@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,11 @@ public class SelectVenueActivity extends AppCompatActivity implements VenueAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venue_list);
 
+        TextView prompt = (TextView) findViewById(R.id.promptUserVenues);
+
+        if(User.currentUser.isAdmin()) {
+            prompt.setText("Click on any venue to see it's events");
+        }
 
         SelectVenueActivity t = this;
         ValueEventListener val = new ValueEventListener() {

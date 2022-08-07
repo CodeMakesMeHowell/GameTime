@@ -35,7 +35,7 @@ public class EditVenueActivity extends AppCompatActivity {
         addActivityButton = findViewById(R.id.EV_addActivityBtn);
 
         description = findViewById(R.id.EV_Description);
-        description.setText("Activities for " + getIntent().getStringExtra("venue_name"));
+        description.setText("Current Activities for " + getIntent().getStringExtra("venue_name"));
 
         fetchVenue();
     }

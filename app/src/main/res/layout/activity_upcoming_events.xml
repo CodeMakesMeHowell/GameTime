@@ -7,15 +7,18 @@
     android:background="@drawable/background"
     tools:context=".UpcomingEventsActivity">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/upcomingevents"
         android:layout_width="414dp"
-        android:layout_height="575dp"
-        android:layout_marginBottom="24dp"
+        android:layout_height="550dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintBottom_toTopOf="@+id/admin_schedule_event_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/EV_Description" />
 
     <Button
         android:id="@+id/admin_schedule_event_button"
@@ -34,8 +37,34 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:onClick="onEditVenueBtnPressed"
-        android:text="@string/editVenueBtn"
+        android:text="@string/ManageVenueBtn"
         app:layout_constraintBottom_toBottomOf="@+id/admin_schedule_event_button"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/EV_Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textColor="#616A68"
+        android:text="Upcoming Events"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/EV_upcomingPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Click on an event to register for it!"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

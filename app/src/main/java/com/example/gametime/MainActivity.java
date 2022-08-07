@@ -96,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                     Intent i = new Intent(MainActivity.this, SelectionActivity.class);
                                     startActivity(i);
-                                    finish();
                                 } else  {
                                     Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
                                 }

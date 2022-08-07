@@ -7,17 +7,29 @@
     android:background="@drawable/background"
     tools:context=".CreateVenueActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Add Venue"
+        android:textSize="27dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/venueNameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
+        android:gravity="center"
+        android:hint="Enter Venue Name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="@string/venueNameInputTxt"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,7 +46,9 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/create_venue_act_header"
+        android:layout_marginTop="35dp"
+        android:textSize="17dp"
+        android:text="Current Activities"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/activitiesRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,11 +71,12 @@
         android:id="@+id/activityNameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
+        android:hint="Enter Activity Name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="@string/activity_name_input_txt"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
