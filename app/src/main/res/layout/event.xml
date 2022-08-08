@@ -21,18 +21,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Event:"
+                android:text="@string/event"
                 android:textColor="#8A918F"
                 android:textSize="25sp"
+                android:paddingBottom="10dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/eventview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="String"
+                android:layout_marginStart="8dp"
+                android:text="@string/event"
                 android:textColor="#8A918F"
+                android:paddingBottom="10dp"
                 android:textSize="25sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -40,13 +42,14 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp">
+            android:layout_marginStart="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Start Time:"
+                android:text="@string/start_time"
                 android:textColor="#8A918F"
+                android:paddingBottom="10dp"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -54,8 +57,9 @@
                 android:id="@+id/startview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="Date"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/start_time"
                 android:textColor="#8A918F"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -64,12 +68,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp">
+            android:layout_marginStart="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="End Time:"
+                android:text="@string/end_time"
+                android:paddingBottom="10dp"
                 android:textColor="#8A918F"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -78,8 +83,9 @@
                 android:id="@+id/endview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="Date"
+                android:layout_marginStart="8dp"
+                android:paddingBottom="10dp"
+                android:text="@string/end_time"
                 android:textColor="#8A918F"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -88,22 +94,24 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp">
+            android:layout_marginStart="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Number of Players:"
+                android:text="@string/remaining_spots"
+                android:paddingBottom="10dp"
                 android:textColor="#8A918F"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/playersview"
                 android:layout_width="wrap_content"
+                android:paddingBottom="10dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="# Players"
+                android:layout_marginStart="8dp"
+                android:text="@string/players"
                 android:textColor="#8A918F"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -112,12 +120,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp">
+            android:layout_marginStart="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Venue:"
+                android:text="@string/venue_info"
+                android:paddingBottom="10dp"
                 android:textColor="#8A918F"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -126,9 +135,10 @@
                 android:id="@+id/venueview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="Place"
+                android:layout_marginStart="8dp"
+                android:text="@string/venue_info"
                 android:textColor="#8A918F"
+                android:paddingBottom="10dp"
                 android:textSize="25sp"
                 android:textStyle="bold" />
         </LinearLayout>

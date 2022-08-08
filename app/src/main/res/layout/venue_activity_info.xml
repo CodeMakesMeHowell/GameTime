@@ -16,14 +16,16 @@
             android:id="@+id/holderActivityNameTxt"
             android:layout_width="206dp"
             android:layout_height="match_parent"
+            android:textSize="17sp"
             android:layout_weight="1"
             android:foregroundGravity="center_vertical|center|center_horizontal"
             android:gravity="center|center_horizontal|center_vertical"
-            android:text="TextView" />
+            android:text="@string/activity_name_input_txt" />
 
         <Button
             android:id="@+id/activityDeleteBtn"
             android:layout_width="113dp"
+            android:textSize="17sp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/holo_red_dark"

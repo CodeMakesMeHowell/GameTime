@@ -43,7 +43,7 @@ public class SelectVenueActivity extends AppCompatActivity implements VenueAdapt
         TextView prompt = (TextView) findViewById(R.id.promptUserVenues);
 
         if(User.currentUser.isAdmin()) {
-            prompt.setText("Click on any venue to see it's events");
+            prompt.setText("Click on any venue to filter events!");
         }
 
         SelectVenueActivity t = this;

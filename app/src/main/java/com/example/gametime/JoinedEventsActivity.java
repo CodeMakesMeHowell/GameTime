@@ -46,7 +46,7 @@ public class JoinedEventsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         if (User.currentUser.getEvents().contains("NO EVENTS")){
-            Toast.makeText(JoinedEventsActivity.this, "You currently have no events!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(JoinedEventsActivity.this, "You currently have no joined events!", Toast.LENGTH_LONG).show();
         }
         else{
             joinedQuery = FirebaseDatabase.getInstance().getReference(FirebaseDBPaths.EVENTS.getPath());

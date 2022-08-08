@@ -20,9 +20,9 @@
     <string name="time_button">Pick time</string>
     <string name="venues_list">Venues</string>
     <string name="number_of_players">Enter number of players</string>
-    <string name="end_time">Select end time</string>
-    <string name="start_time">Select start time</string>
-    <string name="addVenueBtnTxt">Add Venue</string>
+    <string name="end_time_select">Select end time</string>
+    <string name="start_time_select">Select start time</string>
+    <string name="addVenueTxt">Add Venue</string>
     <string name="addEventBtn">Add an event</string>
     <string name="ManageVenueBtn">Manage Venue</string>
     <string name="venueNameInputTxt">Venue Name</string>
@@ -33,6 +33,28 @@
     <string name="activity_name_input_txt">Activity Name</string>
     <string name="your_joined_events">Your Joined Events:</string>
     <string name="your_scheduled_events">Your Scheduled Events</string>
+    <string name="hello">Hello</string>
+    <string name="user">User</string>
+    <string name="selection_prompt">What would you like to do today?</string>
+    <string name="view_venues">View Venues</string>
+    <string name="view_upcoming_events">View upcoming events</string>
+    <string name="view_joined_events">View joined events</string>
+    <string name="view_scheduled_events">View Scheduled events</string>
+    <string name="log_out">Log Out</string>
+    <string name="venue_prompt">Click on any venue to schedule an event</string>
+    <string name="enter_venue_name">Enter Venue Name</string>
+    <string name="current_activities">Current Activities</string>
+    <string name="enter_activity_name">Enter Activity Name</string>
+    <string name="schedule_an_event">Schedule an Event</string>
+    <string name="event">Event:</string>
+    <string name="start_time">Start Time:</string>
+    <string name="end_time">End Time:</string>
+    <string name="remaining_spots">Remaining Spots:</string>
+    <string name="players"># Players</string>
+    <string name="venue_info">Venue:</string>
+    <string name="upcoming_events">Upcoming Events</string>
+    <string name="upcoming_events_prompt">Click on an event to register for it!</string>
+    <string name="manage_venue">Manage Venue</string>
 
     <string-array name="UserTypes">
         <item>Customer</item>

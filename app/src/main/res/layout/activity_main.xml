@@ -7,18 +7,18 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:id="@+id/welcome"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginTop="60dp"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="100dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/signin"
@@ -31,7 +31,7 @@
         android:gravity="center"
         android:text="@string/signInLbl"
         android:textColor="#8A918F"
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <EditText
@@ -40,14 +40,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/signin"
+        android:autofillHints="username"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="#30ffffff"
-        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawableStart="@drawable/ic_baseline_person_24"
         android:drawablePadding="20dp"
+        android:textSize="20sp"
         android:hint="@string/username"
         android:padding="20dp"
         android:textColor="@color/black"
@@ -56,11 +58,13 @@
     <EditText
         android:inputType="textPassword"
         android:background="#30ffffff"
-        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
         android:drawablePadding="20dp"
+        android:autofillHints="password"
         android:hint="@string/password"
         android:id="@+id/password"
         android:layout_below="@id/username"
+        android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -71,15 +75,18 @@
         android:textColorHint="#8A918F" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/loginbtn"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_below="@id/password"
-        android:text="@string/login"
-        android:backgroundTint="#8A918F"
         android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
-        />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/purple_500"
+        android:text="@string/login"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/SignUpPrompt"
@@ -88,11 +95,11 @@
         android:layout_above="@id/SignUptxt"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="85dp"
-        android:layout_marginStart="250dp"
+        android:layout_marginBottom="4dp"
         android:gravity="center"
         android:text="@string/signUpPrompt"
         android:textColor="#8A918F"
-        android:textSize="14sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/SignUptxt"
@@ -106,7 +113,7 @@
         android:gravity="center"
         android:text="@string/signUplbl"
         android:textColor="#058813"
-        android:textSize="14sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

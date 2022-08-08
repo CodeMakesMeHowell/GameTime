@@ -46,7 +46,7 @@ public class ScheduledEventsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         if (User.currentUser.getScheduled().contains("NO EVENTS")){
-            Toast.makeText(ScheduledEventsActivity.this, "You currently have no events!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ScheduledEventsActivity.this, "You currently have no scheduled events!", Toast.LENGTH_LONG).show();
         }
         else{
             joinedQuery = FirebaseDatabase.getInstance().getReference(FirebaseDBPaths.EVENTS.getPath());

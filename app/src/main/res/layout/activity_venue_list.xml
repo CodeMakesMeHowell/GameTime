@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/venue_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,33 +22,33 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:onClick="onAddVenueBtnClick"
-        android:text="@string/addVenueBtnTxt"
+        android:text="@string/addVenueTxt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="149dp"
-        android:textAlignment="center"
         android:layout_height="41dp"
         android:text="@string/venues_list"
+        android:textAlignment="center"
         android:textColor="#616A68"
-        android:textSize="34sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/venue_recycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.444" />
+        app:layout_constraintVertical_bias="0.23" />
 
     <TextView
         android:id="@+id/promptUserVenues"
-        android:layout_width="300dp"
-        android:layout_height="20dp"
-        android:text="Click on any venue to schedule an event"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="@string/venue_prompt"
         android:textAlignment="center"
         android:textColor="#8A918F"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/venue_recycler"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,31 +17,31 @@
         android:gravity="center"
         android:text="@string/app_name"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/helloTxt"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="60dp"
         android:layout_marginTop="150dp"
         android:gravity="center"
-        android:text="Hello"
+        android:text="@string/hello"
         android:textColor="#8A918F"
         android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/nameOfUser"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="60dp"
         android:layout_marginTop="180dp"
         android:gravity="center"
-        android:text="User"
+        android:text="@string/user"
         android:textColor="#8A918F"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -55,9 +54,9 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="250dp"
         android:gravity="center"
-        android:text="What would you like to do today?"
+        android:text="@string/selection_prompt"
         android:textColor="#8A918F"
-        android:textSize="30sp"
+        android:textSize="28sp"
         android:textStyle="bold" />
 
     <Button
@@ -68,13 +67,15 @@
         android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="58dp"
+        android:textSize="15sp"
         android:layout_marginTop="352dp"
         android:backgroundTint="#8A918F"
-        android:text="View Venues" />
+        android:text="@string/view_venues" />
 
     <Button
         android:id="@+id/upcomingEventsButton"
         android:layout_width="130dp"
+        android:textSize="15sp"
         android:layout_height="100dp"
         android:layout_below="@id/selectionTxt"
         android:layout_alignTop="@+id/venueButton"
@@ -87,7 +88,7 @@
         android:layout_marginBottom="0dp"
         android:layout_toEndOf="@+id/venueButton"
         android:backgroundTint="#8A918F"
-        android:text="View upcoming events" />
+        android:text="@string/view_upcoming_events" />
 
     <Button
         android:id="@+id/joinedEventsButton"
@@ -100,11 +101,12 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="-127dp"
         android:layout_marginTop="130dp"
+        android:textSize="15sp"
         android:layout_marginEnd="224dp"
         android:layout_marginBottom="-130dp"
         android:layout_toEndOf="@+id/venueButton"
         android:backgroundTint="#8A918F"
-        android:text="View joined events" />
+        android:text="@string/view_joined_events" />
 
     <Button
         android:id="@+id/scheduledEventsButton"
@@ -113,9 +115,10 @@
         android:layout_alignBottom="@+id/venueButton"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="53dp"
+        android:textSize="15sp"
         android:layout_marginBottom="-129dp"
         android:backgroundTint="#8A918F"
-        android:text="View Scheduled events" />
+        android:text="@string/view_scheduled_events" />
 
     <TextView
         android:id="@+id/LogOutTxt"
@@ -127,9 +130,9 @@
         android:layout_marginTop="2dp"
         android:layout_marginBottom="30dp"
         android:gravity="center"
-        android:text="Log Out"
+        android:textSize="20sp"
+        android:text="@string/log_out"
         android:textColor="#E63852"
-        android:textSize="15sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

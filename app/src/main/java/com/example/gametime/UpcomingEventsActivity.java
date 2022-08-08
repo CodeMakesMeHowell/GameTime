@@ -73,8 +73,7 @@ public class UpcomingEventsActivity extends AppCompatActivity {
             }
         });
 
-
-        if(User.currentUser.isAdmin() && getIntent().getStringExtra("prev_activity").equals("Venue") )
+        if(User.currentUser.isAdmin() && getIntent().getStringExtra("prev_activity").equals("Venues") )
         {
             ((TextView)findViewById(R.id.EV_Description)).setText("Events at " + getIntent().getStringExtra("venue_name"));
             findViewById(R.id.EV_upcomingPrompt).setVisibility(View.GONE);
@@ -83,8 +82,6 @@ public class UpcomingEventsActivity extends AppCompatActivity {
         if(!User.currentUser.isAdmin() || getIntent().getStringExtra("prev_activity").equals("Selection")) {
             findViewById(R.id.admin_edit_venue_btn).setVisibility(View.GONE);
         }
-
-
     }
 
     public void onAdminScheduleEvent(View view){
@@ -110,7 +107,9 @@ public class UpcomingEventsActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), EventActivity.class);
                 Event event = list.get(position);
                 intent.putExtra("event", event);
+
                 startActivity(intent);
+                finish();
             }
         };
     }
