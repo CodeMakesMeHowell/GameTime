@@ -3,7 +3,7 @@
 - Anna Chester
 - Nathan Wong
 - Arwin Fong
-- Steven Wang
+- ~~Steven Wang~~
 
 **Communication Method**: Discord
 
