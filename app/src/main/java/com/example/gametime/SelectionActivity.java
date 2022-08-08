@@ -18,7 +18,7 @@ public class SelectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection);
 
-        TextView displayName = (TextView) findViewById(R.id.nameOfUser);
+        TextView displayName = findViewById(R.id.nameOfUser);
         displayName.setText(MainActivity.nameTxt);
 
         Button venueBtn = findViewById(R.id.venueButton);
@@ -26,54 +26,34 @@ public class SelectionActivity extends AppCompatActivity {
         Button joinedBtn = findViewById(R.id.joinedEventsButton);
         Button scheduledBtn = findViewById(R.id.scheduledEventsButton);
 
-        TextView logOut = (TextView) findViewById(R.id.LogOutTxt);
+        TextView logOut = findViewById(R.id.LogOutTxt);
 
-        if(User.currentUser.isAdmin())
-        {
-           venueBtn.setText("Manage Venues");
-        }
-
-        venueBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SelectionActivity.this, SelectVenueActivity.class);
-                startActivity(intent);
-            }
+        venueBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(SelectionActivity.this, SelectVenueActivity.class);
+            startActivity(intent);
         });
 
-        upcomingBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SelectionActivity.this, UpcomingEventsActivity.class);
-                intent.putExtra("prev_activity", "Selection");
-                startActivity(intent);
-            }
+        upcomingBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(SelectionActivity.this, UpcomingEventsActivity.class);
+            intent.putExtra("prev_activity", "Selection");
+            startActivity(intent);
         });
 
-        joinedBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SelectionActivity.this, JoinedEventsActivity.class);
-                startActivity(intent);
-            }
+        joinedBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(SelectionActivity.this, JoinedEventsActivity.class);
+            startActivity(intent);
         });
 
-        scheduledBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SelectionActivity.this, ScheduledEventsActivity.class);
-                startActivity(intent);
-            }
+        scheduledBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(SelectionActivity.this, ScheduledEventsActivity.class);
+            startActivity(intent);
         });
 
-        logOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentSignIn = new Intent(SelectionActivity.this, MainActivity.class);
-                startActivity(intentSignIn);
-                Toast.makeText(SelectionActivity.this, "Successfully Logged Out", Toast.LENGTH_SHORT).show();
-                finish();
-            }
+        logOut.setOnClickListener(view -> {
+            Intent intentSignIn = new Intent(SelectionActivity.this, MainActivity.class);
+            startActivity(intentSignIn);
+            Toast.makeText(SelectionActivity.this, "Successfully Logged Out", Toast.LENGTH_SHORT).show();
+            finish();
         });
     }
 
