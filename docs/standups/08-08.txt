@@ -1,0 +1,43 @@
+Name: John
+
+What have you done since yesterday?
+	- reviewed code and tested
+What are you planning on doing today?
+	- clean up code
+
+Any impediments or stumbling blocks?
+	- No
+  
+Name: Anna
+
+What have you done since yesterday?
+	- Fix up UI
+
+What are you planning on doing today?
+	- Continue fixing up UI
+
+Any impediments or stumbling blocks?
+	- Getting a consistent display across different devices
+
+Name: Nathan
+
+What have you done since yesterday?
+	- Completed edit venue activity
+  - fix bug when admins registered for event
+
+What are you planning on doing today?
+	- clean up database
+
+Any impediments or stumbling blocks?
+	- no
+
+Name: Arwin
+
+What have you done since yesterday?
+	- Created activity to view scheduled events
+
+What are you planning on doing today?
+	- clean up database
+
+Any impediments or stumbling blocks?
+	- no
