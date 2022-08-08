@@ -73,6 +73,7 @@ public class UpcomingEventsActivity extends AppCompatActivity {
             }
         });
 
+
         if(User.currentUser.isAdmin() && getIntent().getStringExtra("prev_activity").equals("Venue") )
         {
             ((TextView)findViewById(R.id.EV_Description)).setText("Events at " + getIntent().getStringExtra("venue_name"));

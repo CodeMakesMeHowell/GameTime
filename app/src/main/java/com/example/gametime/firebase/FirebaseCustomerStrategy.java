@@ -59,7 +59,7 @@ public class FirebaseCustomerStrategy extends FirebaseCustomerBehavior {
             curr_user.getScheduled().remove("NO EVENTS");
         }
         else {
-            int num = curr_user.getEvents().size();
+            int num = curr_user.getScheduled().size();
             ref.child(curr_user.getUsername()).child("scheduled").child(String.valueOf(num)).setValue(event.toUIDString());
         }
         curr_user.addScheduled(event.toUIDString());

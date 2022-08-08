@@ -72,7 +72,6 @@ public class EventActivity extends AppCompatActivity {
                                 User.currentUser.addEvent(event.toUIDString());
                                 DatabaseReference ref = db.getReference(FirebaseDBPaths.EVENTS.getPath());
                                 ref.child(event.toUIDString()).setValue(event);
-                                startActivity(new Intent(EventActivity.this, UpcomingEventsActivity.class));
                                 finish();
                             }
 

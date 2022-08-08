@@ -146,7 +146,7 @@ public class ScheduleEventActivity extends AppCompatActivity{
                             back.putExtra("num_events", getIntent().getIntExtra("num_events", 0));
                             back.putExtra("activities", getIntent().getStringArrayListExtra("activities"));
                         }
-                        startActivity(back);
+                        //startActivity(back);
                         finish();
                     } catch (GTFirebaseException e) {
                         e.printStackTrace();
