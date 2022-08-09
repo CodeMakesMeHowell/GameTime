@@ -1,0 +1,47 @@
+Name: John
+
+What have you done since yesterday?
+	- Created project README
+  
+What are you planning on doing today?
+	- Submit project
+  - create document of responsibilities
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Anna
+
+What have you done since yesterday?
+	- UI fixes
+
+What are you planning on doing today?
+	- Submit project
+  - create document of responsibilities
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Nathan
+
+What have you done since yesterday?
+	- cleaned up database
+
+What are you planning on doing today?
+	- submit project
+  - create document of responsibilities
+
+Any impediments or stumbling blocks?
+	- no
+  
+Name: Arwin
+
+What have you done since yesterday?
+	- cleaned up database
+
+What are you planning on doing today?
+	- submit project
+  - create document of responsibilities
+
+Any impediments or stumbling blocks?
+	- 
